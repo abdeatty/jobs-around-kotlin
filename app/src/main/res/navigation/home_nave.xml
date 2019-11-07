@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nave"
+    app:startDestination="@id/chatUserListFragment">
+
+
+
+    <fragment android:id="@+id/chatUserListFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.chatUserList.ChatUserListFragment"
+        tools:layout="@layout/fragment_chat_user_list"
+        android:label="ChatList"/>
+
+
+    <fragment android:id="@+id/profileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.amaz.dev.android.jobsaround.ui.profile.ProfileFragment">
+
+        <action android:id="@+id/action_profileFragment_to_createJobFragment"
+            app:destination="@id/createJobFragment"/>
+
+        <action android:id="@+id/action_profileFragment_to_myJobFragment"
+            app:destination="@+id/myJobsFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/createJobFragment"
+        tools:layout="@layout/fragment_create_job"
+        android:name="com.amaz.dev.android.jobsaround.ui.createJob.CreateJobFragment"
+        android:label="CreateJob"/>
+
+    <fragment android:id="@+id/myJobsFragment"
+        android:label="MyJobs"
+        android:name="com.amaz.dev.android.jobsaround.ui.myJobs.MyJobsFragment"
+        tools:layout="@layout/fragment_my_jobs"/>
+</navigation>

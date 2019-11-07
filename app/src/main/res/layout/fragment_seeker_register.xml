@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.auth.register.seeker.SeekerRegisterFragment">
+
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:src="@drawable/ic_photo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias=".6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias=".9" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="اسم العائله"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="الاسم الثانى"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="الاسم الاول"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:gravity="center"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeWidth="@dimen/_4sdp"
+                    android:layout_height="@dimen/_45sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeWidth="@dimen/_4sdp"
+                    android:layout_height="@dimen/_45sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeWidth="@dimen/_4sdp"
+                    android:layout_height="@dimen/_45sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text=" ميلاديا"
+                    android:layout_width="0dp"
+                    android:layout_weight=".6"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text=" العام"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:padding="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:text=" الشهر"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:text="اليوم "
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+
+
+                <TextView
+                    android:text="تاريخ الميلاد"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_65sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text=" هجريا"
+                    android:layout_width="0dp"
+                    android:layout_weight=".6"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text=" العام"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:padding="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:text=" الشهر"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:text="اليوم "
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:background="@drawable/rect_light_blue"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@android:color/darker_gray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="2">
+
+
+                    <RadioButton
+                        android:drawableEnd="@drawable/ic_female"
+                        android:layout_width="wrap_content"
+                        android:drawableTint="@color/pink"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="@color/blue"
+                        android:drawableEnd="@drawable/ic_male"/>
+                </RadioGroup>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="الجنس"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="المؤهل العملى"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:drawablePadding="@dimen/_8sdp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text=" التخصص الوظيفى"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/_8sdp"
+
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text=" عدد سنوات الخبره"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawableStart="@drawable/ic_drop_down_arrow"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="وصف مختصر عن الخبرات السابقه ان وجدت"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxCornerRadiusBottomEnd="@dimen/_5sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_5sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_5sdp"
+                app:boxCornerRadiusTopStart="@dimen/_5sdp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_100sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="مستوى اللغه الانجليزيه"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/rect_white_with_gray_border"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/english_level_good_tv"
+                        android:layout_width="0dp"
+                        android:text="جيد"
+
+                        android:padding="@dimen/_4sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/english_level_intermediate_tv"
+                        android:layout_width="0dp"
+                        android:text="متوسط"
+                        android:padding="@dimen/_4sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:gravity="center"
+                        android:background="@drawable/rect_light_blue"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/english_level_beginner_tv"
+                        android:layout_width="0dp"
+                        android:text="مبتدئ"
+
+                        android:gravity="center"
+                        android:padding="@dimen/_4sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="نعم"/>
+
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="لا"/>
+                </RadioGroup>
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الجنسيه"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سعودى"
+                android:drawableStart="@drawable/ic_drop_down_arrow"
+                android:drawablePadding="@dimen/_100sdp"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:padding="@dimen/_4sdp"
+                android:background="@drawable/rect_light_blue"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="نوع الدوام"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/rect_white_with_gray_border"
+                android:layout_marginStart="@dimen/_80sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/both_partial_and_part_job_type_tv"
+                    android:layout_width="0dp"
+                    android:text="الكل"
+
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/partial_job_type_tv"
+                    android:layout_width="0dp"
+                    android:text="جزئي"
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:background="@drawable/rect_light_blue"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/full_time_job_type_tv"
+                    android:layout_width="0dp"
+                    android:text="كامل"
+
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الموقع على الخريطه"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/ic_map"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/map_iv"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:scaleType="fitXY"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="  ارفاق السيره الذاتيه"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawableStart="@drawable/ic_upload"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="رقم الجوال"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:text="البريد الالكترونى"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxStrokeWidth="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="center"
+                app:cornerRadius="@dimen/_20sdp"
+                android:visibility="visible"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:text="حفظ وارسال رمز التحقق"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_40sdp"/>
+
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+
+                android:visibility="gone"
+                app:layout_goneMarginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="تعطيل"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawableTop="@drawable/ic_power"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="حفظ"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawableTop="@drawable/ic_verified"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="تحديث"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawableTop="@drawable/ic_recycle"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

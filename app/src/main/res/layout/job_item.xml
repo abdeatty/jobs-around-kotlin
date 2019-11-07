@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/_6sdp"
+    app:cardPreventCornerOverlap="false"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layoutDirection="ltr"
+    android:layout_margin="@dimen/_4sdp"
+    android:background="@color/white"
+
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    app:srcCompat="@drawable/ic_star"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/foundation_iv"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/ic_photo"
+                    />
+
+
+                <TextView
+                    android:id="@+id/foundation_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="موسسه قنوات الرقميه"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/job_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مهندس ميكانيكا"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintTop_toBottomOf="@id/foundation_name_tv"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 كم"
+                    app:layout_constraintHorizontal_bias=".5"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/job_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/foundation_name_tv"/>
+
+                <TextView
+                    android:id="@+id/gender"
+                    app:layout_constraintTop_toBottomOf="@id/job_title"
+                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="ذكر"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintHorizontal_bias=".2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/job_title"
+                    app:layout_constraintEnd_toStartOf="@id/gender"
+                    android:text="10-9-2019"/>
+
+                <TextView
+                    android:id="@+id/job_location_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/gender"
+                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="الرياض,المملكه العربيه السعوديه"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>

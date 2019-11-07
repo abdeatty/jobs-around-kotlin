@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/userSelectionFragment">
+
+    <fragment
+        android:id="@+id/userSelectionFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.auth.UserSelectionFragment"
+        android:label="UserSelectionFragment"
+        tools:layout="@layout/fragment_user_selection">
+
+        <action android:id="@+id/action_userSelectionFragment_to_seekerRegisterFragment"
+            app:destination="@id/seekerRegisterFragment"/>
+
+
+        <action android:id="@+id/action_userSelectionFragment_to_ownerRegisterFragment"
+            app:destination="@id/ownerRegisterFragment"/>
+
+
+
+        <action android:id="@+id/action_userSelectionFragment_to_loginFragment"
+            app:destination="@id/loginFragment"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/seekerRegisterFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.auth.register.seeker.SeekerRegisterFragment"
+        android:label="SeekerRegister"
+        tools:layout="@layout/fragment_seeker_register">
+
+        <action android:id="@+id/action_seekerRegisterFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/ownerRegisterFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.auth.register.owner.OwnerRegisterFragment"
+        tools:layout="@layout/fragment_owner_register"
+        android:label="OwnerRegister">
+
+
+        <action android:id="@+id/action_ownerRegisterFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/loginFragment"
+        tools:layout="@layout/fragment_login"
+        android:name="com.amaz.dev.android.jobsaround.ui.auth.login.LoginFragment"
+        android:label="LoginFragment"/>
+
+
+    <fragment android:id="@+id/rulesFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.rules.RulesFragment"
+        android:label="RulesFragment"
+        tools:layout="@layout/fragment_rules">
+
+        <action android:id="@+id/action_rulesFragment_to_feesFragment"
+            app:destination="@id/feesFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/homeFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment"/>
+
+    <fragment android:id="@+id/feesFragment"
+        tools:layout="@layout/fragment_fees"
+        android:label="FeesFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.fees.FeesFragment">
+
+        <action android:id="@+id/action_feesFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"/>
+    </fragment>
+</navigation>

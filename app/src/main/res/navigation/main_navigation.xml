@@ -24,6 +24,14 @@
             app:destination="@id/loginFragment"/>
     </fragment>
 
+    <fragment android:id="@+id/phoneVerificationFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.auth.phoneverification.PhoneVerificationFragment"
+        tools:layout="@layout/fragment_phone_verification">
+
+        <action android:id="@+id/action_phoneVerification_to_homeFragment"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+
 
     <fragment
         android:id="@+id/seekerRegisterFragment"
@@ -50,7 +58,11 @@
     <fragment android:id="@+id/loginFragment"
         tools:layout="@layout/fragment_login"
         android:name="com.amaz.dev.android.jobsaround.ui.auth.login.LoginFragment"
-        android:label="LoginFragment"/>
+        android:label="LoginFragment">
+
+        <action android:id="@+id/action_loginFragment_to_phoneVerification"
+            app:destination="@+id/phoneVerificationFragment"/>
+    </fragment>
 
 
     <fragment android:id="@+id/rulesFragment"
@@ -74,5 +86,6 @@
 
         <action android:id="@+id/action_feesFragment_to_homeFragment"
             app:destination="@+id/homeFragment"/>
+
     </fragment>
 </navigation>

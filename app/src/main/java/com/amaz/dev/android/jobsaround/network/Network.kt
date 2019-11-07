@@ -1,6 +1,5 @@
-package sa.amaz.jaz.teacher.network
+package com.amaz.dev.android.jobsaround.network
 
-import com.amaz.dev.android.jobsaround.network.ApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

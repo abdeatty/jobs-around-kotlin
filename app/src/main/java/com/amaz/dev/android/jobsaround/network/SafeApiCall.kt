@@ -1,12 +1,13 @@
-package sa.amaz.jaz.teacher.network
+package com.amaz.dev.android.jobsaround.network
 
 import android.util.Log
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import retrofit2.HttpException
-import sa.amaz.jaz.student.models.ApiError
-import sa.amaz.jaz.teacher.models.ApiResponse
-import sa.amaz.jaz.teacher.models.DataResult
+import com.amaz.dev.android.jobsaround.models.ApiError
+import com.amaz.dev.android.jobsaround.models.ApiResponse
+import com.amaz.dev.android.jobsaround.models.DataResult
+
 import java.io.IOException
 
 

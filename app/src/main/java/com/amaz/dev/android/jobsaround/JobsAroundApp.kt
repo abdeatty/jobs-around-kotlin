@@ -7,7 +7,7 @@ import com.amaz.dev.android.jobsaround.helpers.Utilities
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import sa.amaz.jaz.teacher.network.Network
+import com.amaz.dev.android.jobsaround.network.Network
 
 
 class JobsAroundApp : Application() {

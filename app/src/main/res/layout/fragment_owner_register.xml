@@ -47,6 +47,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/organizationNameTIET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="@dimen/_8sdp"
@@ -74,8 +75,10 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/organizationImageTI"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:editable="false"
                     android:drawableStart="@drawable/ic_upload"
                     android:padding="@dimen/_4sdp"
                     android:drawablePadding="@dimen/_8sdp"
@@ -101,6 +104,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/organizationActivityTI"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_drop_down_arrow"
@@ -183,6 +187,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/businessCommercialNumberTIET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"/>
@@ -207,10 +212,12 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/businessCommercialImageTIET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_upload"
                     android:padding="@dimen/_4sdp"
+                    android:editable="false"
                     android:drawablePadding="@dimen/_8sdp"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -234,6 +241,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/authorizedPersonNameTIET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
 
@@ -263,6 +271,7 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
+
                         android:layout_width="match_parent"
                         android:gravity="center"
                         app:boxStrokeColor="@color/colorPrimary"
@@ -272,6 +281,7 @@
                         android:layout_height="@dimen/_45sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneTIET"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="@dimen/_8sdp"
@@ -297,6 +307,7 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
+
                         android:layout_width="match_parent"
                         android:gravity="center"
                         app:boxStrokeColor="@color/colorPrimary"
@@ -306,6 +317,7 @@
                         android:layout_height="@dimen/_45sdp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneNumberTIET"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="@dimen/_8sdp"
@@ -327,6 +339,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+
                 android:layout_width="match_parent"
                 android:gravity="center"
                 app:boxStrokeColor="@color/colorPrimary"
@@ -336,6 +349,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTIET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="@dimen/_8sdp"

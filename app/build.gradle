@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -22,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
 }
 
 dependencies {
@@ -51,11 +58,15 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-alpha01'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-alpha01'
     // ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha03'
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0-alpha03'
-
+    // Google Materials
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
     // Kotlin Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.0-alpha-2'
@@ -73,6 +84,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+    // Room
+    implementation 'androidx.room:room-runtime:2.2.0-rc01'
+    kapt 'androidx.room:room-compiler:2.2.0-rc01'
+    implementation 'androidx.room:room-ktx:2.2.0-rc01'
     // UriUtils
     implementation 'com.blankj:utilcodex:1.24.4'
 }

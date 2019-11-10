@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
+import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_chat_list.*
 
 /**

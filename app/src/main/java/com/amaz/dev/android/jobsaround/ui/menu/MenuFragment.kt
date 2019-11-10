@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import java.util.ArrayList
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 /**

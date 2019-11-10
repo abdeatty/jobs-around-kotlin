@@ -16,7 +16,7 @@ class JobsAroundApp : Application() {
         super.onCreate()
 
 
-        Utilities.ovverideAppFont(applicationContext, "SERIF", "fonts/font_regular.ttf")
+//        Utilities.ovverideAppFont(applicationContext, "SERIF", "")
 
 
 //        Network.init

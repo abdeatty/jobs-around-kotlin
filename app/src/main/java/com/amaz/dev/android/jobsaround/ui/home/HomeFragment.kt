@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 
 import com.amaz.dev.android.jobsaround.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : Fragment() {
 
+    lateinit var  bottomNav : BottomNavigationView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,22 @@ class HomeFragment : Fragment() {
         val navHostFragment = view.findViewById<View>(R.id.home_nav_host_fragment)
         val navController = Navigation.findNavController(navHostFragment)
         bottomNavView.setupWithNavController(navController)
+
+
+    }
+
+    public fun hideBottomNav() {
+
+        bottomNav.visibility = View.INVISIBLE
+    }
+
+    companion object{
+
+        fun hideBottomNav(a : HomeFragment){
+            a.hideBottomNav()
+        }
+
+
     }
 
 

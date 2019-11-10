@@ -11,14 +11,17 @@
         android:label="UserSelectionFragment"
         tools:layout="@layout/fragment_user_selection">
 
-        <action android:id="@+id/action_userSelectionFragment_to_seekerRegisterFragment"
-            app:destination="@id/seekerRegisterFragment"/>
+<!--        <action android:id="@+id/action_userSelectionFragment_to_seekerRegisterFragment"-->
+<!--            app:destination="@id/seekerRegisterFragment"/>-->
 
 
-        <action android:id="@+id/action_userSelectionFragment_to_ownerRegisterFragment"
-            app:destination="@id/ownerRegisterFragment"/>
+<!--        <action android:id="@+id/action_userSelectionFragment_to_ownerRegisterFragment"-->
+<!--            app:destination="@id/ownerRegisterFragment"/>-->
 
 
+
+        <action android:id="@+id/action_userSelectionFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment"/>
 
         <action android:id="@+id/action_userSelectionFragment_to_loginFragment"
             app:destination="@id/loginFragment"/>
@@ -49,9 +52,9 @@
         tools:layout="@layout/fragment_owner_register"
         android:label="OwnerRegister">
 
+        <action android:id="@+id/action_ownerRegisterFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"/>
 
-        <action android:id="@+id/action_ownerRegisterFragment_to_rulesFragment"
-            app:destination="@id/rulesFragment"/>
     </fragment>
 
 
@@ -84,8 +87,12 @@
         android:label="FeesFragment"
         android:name="com.amaz.dev.android.jobsaround.ui.fees.FeesFragment">
 
-        <action android:id="@+id/action_feesFragment_to_homeFragment"
-            app:destination="@+id/homeFragment"/>
+        <action android:id="@+id/action_feesFragment_to_ownerRegisterFragment"
+            app:destination="@+id/ownerRegisterFragment"/>
+
+
+        <action android:id="@+id/action_feesFragment_to_seekerRegisterFragment"
+            app:destination="@+id/seekerRegisterFragment"/>
 
     </fragment>
 </navigation>

@@ -34,6 +34,16 @@ class ProfileFragment : Fragment() {
         myJobsButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_myJobFragment)
         }
+
+        myInfoBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_seekerInfoFragment)
+        }
+
+         feesBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_feesFragment)
+        }
+
+
     }
 
 }

@@ -34,11 +34,29 @@
         android:textColor="@color/colorPrimary"
         android:background="@drawable/circle_gray"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        app:layout_constraintGuide_percent=".52"
+        android:orientation="vertical" />
     <ImageView
+        android:id="@+id/bagImgV"
+        app:srcCompat="@drawable/ic_bag"
+        app:layout_constraintTop_toTopOf="@+id/ownerImgV"
+        app:layout_constraintStart_toEndOf="@id/guideLine"
+       app:layout_constraintBottom_toBottomOf="@+id/ownerImgV"
+        app:layout_constraintVertical_bias=".7"
+
+        android:elevation="@dimen/_2sdp"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"/>
+    <ImageView
+        android:id="@+id/ownerImgV"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        app:srcCompat="@drawable/ic_job_seeker"
+        app:srcCompat="@drawable/ic_male"
         android:padding="@dimen/_8sdp"
         android:tint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,10 +94,22 @@
         android:background="@drawable/circle_gray"/>
 
     <ImageView
+        app:srcCompat="@drawable/ic_magnifier"
+        app:layout_constraintTop_toTopOf="@+id/seekerImgV"
+        app:layout_constraintStart_toEndOf="@id/guideLine"
+        app:layout_constraintBottom_toBottomOf="@+id/seekerImgV"
+        app:layout_constraintVertical_bias=".7"
+
+        android:elevation="@dimen/_2sdp"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"/>
+
+    <ImageView
+        android:id="@+id/seekerImgV"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        app:srcCompat="@drawable/ic_job_seeker"
+        app:srcCompat="@drawable/ic_male"
         android:padding="@dimen/_8sdp"
         android:tint="@color/gray"
         app:layout_constraintStart_toStartOf="parent"

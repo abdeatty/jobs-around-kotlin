@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -22,5 +23,9 @@ class ChatFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 
 }

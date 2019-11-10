@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.helpers.Constants
+import com.android.airbag.helpers.SharedPreferencesManager
 import kotlinx.android.synthetic.main.fragment_user_selection.*
+import kotlinx.android.synthetic.main.tool_bar.*
 
 /**
  * A simple [Fragment] subclass.
@@ -28,13 +31,16 @@ class UserSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        appBarTitle.text = getString(R.string.new_register)
 
         ownerTV.setOnClickListener {
-            findNavController().navigate(R.id.action_userSelectionFragment_to_ownerRegisterFragment)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,0)
+            findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 
         seekerTV.setOnClickListener {
-            findNavController().navigate(R.id.action_userSelectionFragment_to_seekerRegisterFragment)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,1)
+            findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 
         loginTV.setOnClickListener{

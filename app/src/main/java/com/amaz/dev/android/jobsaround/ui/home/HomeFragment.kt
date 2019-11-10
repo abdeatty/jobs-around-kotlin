@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 
 import com.amaz.dev.android.jobsaround.R
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -37,4 +38,9 @@ class HomeFragment : Fragment() {
         val navController = Navigation.findNavController(navHostFragment)
         bottomNavView.setupWithNavController(navController)
     }
+
+
+
+
+
 }

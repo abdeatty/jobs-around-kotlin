@@ -8,10 +8,19 @@
 
 
     <fragment android:id="@+id/chatUserListFragment"
-        android:name="com.amaz.dev.android.jobsaround.ui.chatUserList.ChatUserListFragment"
-        tools:layout="@layout/fragment_chat_user_list"
-        android:label="ChatList"/>
+        android:name="com.amaz.dev.android.jobsaround.ui.chat_list.ChatListFragment"
+        tools:layout="@layout/fragment_chat_list"
+        android:label="ChatList">
 
+        <action android:id="@+id/action_chatListFragment_to_cahtFragment"
+            app:destination="@id/chatFragment"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/chatFragment"
+        tools:layout="@layout/fragment_chat"
+        android:name="com.amaz.dev.android.jobsaround.ui.chat.ChatFragment"
+        android:label="Chat"/>
 
     <fragment android:id="@+id/profileFragment"
         android:label="ProfileFragment"
@@ -23,7 +32,23 @@
 
         <action android:id="@+id/action_profileFragment_to_myJobFragment"
             app:destination="@+id/myJobsFragment"/>
+
+        <action android:id="@+id/action_profileFragment_to_seekerInfoFragment"
+            app:destination="@+id/seekerInfoFragment"/>
+
+
+        <action android:id="@+id/action_profileFragment_to_feesFragment"
+            app:destination="@+id/feesFragment"/>
     </fragment>
+
+    <fragment android:id="@+id/menuFragment"
+        tools:layout="@layout/fragment_menu"
+        android:label="@string/menu"
+        android:name="com.amaz.dev.android.jobsaround.ui.menu.MenuFragment"/>
+
+    <fragment android:name="com.amaz.dev.android.jobsaround.ui.fees.FeesFragment"
+        tools:layout="@layout/fragment_fees"
+        android:id="@+id/feesFragment"/>
 
     <fragment android:id="@+id/createJobFragment"
         tools:layout="@layout/fragment_create_job"
@@ -33,5 +58,18 @@
     <fragment android:id="@+id/myJobsFragment"
         android:label="MyJobs"
         android:name="com.amaz.dev.android.jobsaround.ui.myJobs.MyJobsFragment"
-        tools:layout="@layout/fragment_my_jobs"/>
+        tools:layout="@layout/fragment_my_jobs">
+
+        <action android:id="@+id/action_myJobsFragment_to_jobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/jobDetailsFragment" android:label="jobDetails"
+        android:name="com.amaz.dev.android.jobsaround.ui.job_details.JobDetailsFragment"
+        tools:layout="@layout/fragment_job_details"/>
+
+
+    <fragment android:id="@+id/seekerInfoFragment"
+        tools:layout="@layout/fragment_seeker_info"
+        android:name="com.amaz.dev.android.jobsaround.ui.seekerInfo.SeekerInfoFragment"/>
 </navigation>

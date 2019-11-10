@@ -27,10 +27,10 @@
             android:textColor="@color/white"
 
             android:text="محمد على"/>
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/ic_photo"
+            app:srcCompat="@drawable/ic_logo"
             android:layout_margin="@dimen/_5sdp"/>
 
 
@@ -69,10 +69,11 @@
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
                     android:textSize="@dimen/_12sdp"
-                    app:icon="@drawable/ic_star"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconSize="@dimen/_40sdp"
+                    app:icon="@drawable/ic_add_job"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/_25sdp"
                     app:iconGravity="end"
+                    app:iconPadding="@dimen/_20sdp"
                     android:backgroundTint="@color/white"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -86,11 +87,11 @@
                     android:text="وظائفى"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
-
+                    app:iconPadding="@dimen/_20sdp"
                     android:textSize="@dimen/_12sdp"
                     app:icon="@drawable/ic_star"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconSize="@dimen/_40sdp"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/_25sdp"
                     app:iconGravity="end"
                     android:backgroundTint="@color/white"/>
 
@@ -106,17 +107,17 @@
                     android:text="المفضله"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
-
+                    app:iconPadding="@dimen/_20sdp"
                     android:textSize="@dimen/_12sdp"
-                    app:icon="@drawable/ic_star"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconSize="@dimen/_40sdp"
+                    app:icon="@drawable/ic_add_job"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/_25sdp"
                     app:iconGravity="end"
                     android:backgroundTint="@color/white"/>
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/my_info_btn"
+                    android:id="@+id/myInfoBtn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     app:strokeColor="@android:color/darker_gray"
@@ -126,17 +127,17 @@
                     android:text="بيانتى"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
-
+                    app:iconPadding="@dimen/_20sdp"
                     android:textSize="@dimen/_12sdp"
-                    app:icon="@drawable/ic_star"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconSize="@dimen/_40sdp"
+                    app:icon="@drawable/ic_folder"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/_25sdp"
                     app:iconGravity="end"
                     android:backgroundTint="@color/white"/>
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fees_btn"
+                    android:id="@+id/feesBtn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     app:strokeColor="@android:color/darker_gray"
@@ -146,11 +147,11 @@
                     android:text="الرسوم"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
-
+                    app:iconPadding="@dimen/_20sdp"
                     android:textSize="@dimen/_12sdp"
-                    app:icon="@drawable/ic_star"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconSize="@dimen/_40sdp"
+                    app:icon="@drawable/ic_card"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/_25sdp"
                     app:iconGravity="end"
                     android:backgroundTint="@color/white"/>
 

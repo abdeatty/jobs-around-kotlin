@@ -18,4 +18,36 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_register">تسجيل جديد</string>
+    <string name="agree">موافق</string>
+    <string name="rules_condition">الشروط والاحكام</string>
+    <string name="fees">الرسوم</string>
+    <string name="fees_hint">الرسوم مجانيه حاليا</string>
+    <string name="bank_accounts">الحسابات البنكيه</string>
+    <string name="account_number">رقم الحساب:</string>
+    <string name="account_name">اسم الحساب:</string>
+    <string name="pen_number">رقم الايبان:</string>
+    <string name="bank">البنك:</string>
+    <string name="foundation_info">بيانات المنشأة</string>
+    <string name="hide_foundation_name">حجب اسم المنشاة</string>
+    <string name="hide_foundation_logo">حجب شعار المنشاة</string>
+    <string name="foundation_activity">نشاط المنشأه</string>
+    <string name="select_foundation_location">تحديدموقع المنشأه على الخريطه</string>
+    <string name="location_hint">يمكن تحريك الموشرالى موقع قريب فى نفس الحى كحديقه عامه او طريق رئيسئ</string>
+    <string name="commerical_number">رقم السجل التجارى</string>
+    <string name="commercial_register_file">ارفاق صوره السجل التجارى</string>
+    <string name="person_name">اسم الشخص المخول</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="mobile_number">رقم الجوال</string>
+    <string name="email">البريد الالكترونى</string>
+    <string name="family_name">اسم العائله</string>
+    <string name="middel_name">الاسم الثانى</string>
+    <string name="first_name">الاسم الاول</string>
+    <string name="birthday_format">العام/الشهر/اليوم</string>
+    <string name="birthday">تاريخ الميلاد</string>
+    <string name="hegira">هجريا</string>
+    <string name="ad">ميلاديا</string>
+    <string name="gender">الجنس</string>
+    <string name="seeker_info">بيانات الباحث عن عمل</string>
+    <string name="add_job">Add Job</string>
 </resources>

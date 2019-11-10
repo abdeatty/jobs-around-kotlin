@@ -32,7 +32,7 @@
                     android:layout_height="@dimen/_80sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:src="@drawable/ic_photo"
+                    android:src="@drawable/ic_male"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
                 <ImageView
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:src="@mipmap/ic_launcher"
+                    app:srcCompat="@drawable/ic_plus"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias=".6"
@@ -64,7 +64,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"
-                    android:text="اسم العائله"
+                    android:text="@string/family_name"
                     android:textSize="@dimen/_12sdp" />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"
-                    android:text="الاسم الثانى"
+                    android:text="@string/middel_name"
                     android:textSize="@dimen/_12sdp" />
 
 
@@ -83,7 +83,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"
-                    android:text="الاسم الاول"
+                    android:text="@string/first_name"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
@@ -150,49 +150,22 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text=" ميلاديا"
+                    android:text="@string/ad"
                     android:layout_width="0dp"
                     android:layout_weight=".6"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:text=" العام"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:background="@drawable/rect_light_blue"
-                    android:padding="@dimen/_4sdp"
-                    android:drawablePadding="@dimen/_8sdp"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_height="wrap_content"/>
 
 
                 <TextView
-                    android:text=" الشهر"
+                    android:text="@string/birthday_format"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:drawablePadding="@dimen/_8sdp"
-                    android:background="@drawable/rect_light_blue"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_height="wrap_content"/>
-
-
-                <TextView
-                    android:text="اليوم "
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:padding="@dimen/_4sdp"
                     android:drawablePadding="@dimen/_8sdp"
@@ -204,7 +177,7 @@
 
 
                 <TextView
-                    android:text="تاريخ الميلاد"
+                    android:text="@string/birthday"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -217,49 +190,25 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_65sdp"
                 android:orientation="horizontal">
 
+
+
                 <TextView
-                    android:text=" هجريا"
+                    android:text="@string/hegira"
                     android:layout_width="0dp"
                     android:layout_weight=".6"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:text=" العام"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:background="@drawable/rect_light_blue"
-                    android:padding="@dimen/_4sdp"
-                    android:drawablePadding="@dimen/_8sdp"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_height="wrap_content"/>
+
 
 
                 <TextView
-                    android:text=" الشهر"
+                    android:text="@string/birthday_format"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:drawablePadding="@dimen/_8sdp"
-                    android:background="@drawable/rect_light_blue"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_height="wrap_content"/>
-
-
-                <TextView
-                    android:text="اليوم "
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:padding="@dimen/_4sdp"
                     android:drawablePadding="@dimen/_8sdp"
@@ -268,6 +217,14 @@
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"/>
 
+
+                <TextView
+                    android:text="@string/birthday"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -311,7 +268,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="الجنس"
+                    android:text="@string/gender"
                     android:layout_margin="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
@@ -603,7 +560,7 @@
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/ic_map"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:id="@+id/map_iv"
+                android:id="@+id/mapImgV"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:scaleType="fitXY"/>

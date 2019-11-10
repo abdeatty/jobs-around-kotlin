@@ -12,14 +12,14 @@
 
         <ImageView
 
-            android:id="@+id/tool_bar_icon"
+            android:id="@+id/toolBarIcon1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:visibility="invisible"
             android:tint="@color/white"
             android:layout_height="@dimen/_25sdp"/>
         <TextView
-            android:id="@+id/tool_bar_title"
+            android:id="@+id/appBarTitle"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:textSize="@dimen/_16sdp"
@@ -27,18 +27,17 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:textStyle="bold"
-            android:text="@string/app_name"
             android:gravity="center"
             />
 
 
 
         <ImageView
-            android:id="@+id/search_iv"
+            android:id="@+id/toolBarIcon2"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/ic_search_black_24dp"
+            app:srcCompat="@drawable/ic_arrow_point_to_right"
+            android:padding="@dimen/_6sdp"
             android:layout_height="@dimen/_30sdp"
             />
 </LinearLayout>

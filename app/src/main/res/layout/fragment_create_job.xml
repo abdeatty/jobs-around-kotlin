@@ -315,12 +315,14 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
+                        android:layoutDirection="rtl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="سعودى"/>
 
 
                     <RadioButton
+                        android:layoutDirection="rtl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="الكل"/>

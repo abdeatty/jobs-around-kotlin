@@ -6,16 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_my_jobs.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class MyJobsFragment : Fragment() {
+class MyJobsFragment : Fragment() ,ItemClickListener<String>{
+    override fun onItemClicked(item: String) {
 
-    private val adapter by lazy { MyJobsAdapter(context!!) }
+
+        findNavController().navigate(R.id.action_myJobsFragment_to_jobDetailsFragment)
+    }
+
+    private val adapter by lazy { MyJobsAdapter(context!!,this) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +35,8 @@ class MyJobsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myJobsRv.adapter = adapter
+
+
 
     }
 }

@@ -51,7 +51,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="@dimen/_8sdp"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,13 +84,43 @@
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:checked="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_gravity="end"
+                    android:text="@string/hide_foundation_logo"/>
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:checked="false"
+                    android:buttonTint="@color/green"
+                    android:text="@string/hide_foundation_name"/>
+            </LinearLayout>
+
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="نشلط المنشأه"/>
+                android:text="@string/foundation_activity"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +136,6 @@
                     android:id="@+id/organizationActivityTI"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
                     android:drawablePadding="@dimen/_8sdp"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +143,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="تحديدموقع المنشأه على الخريطه"
+                android:text="@string/select_foundation_location"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"/>
@@ -128,19 +156,19 @@
                 android:layout_gravity="end|center"
                 android:gravity="center"
                 android:drawableTint="@color/blue"
-
+                android:drawablePadding="@dimen/_20sdp"
                 android:drawableEnd="@drawable/ic_pin"
                 android:layout_margin="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:text="يمكن تحريك الموشرالى موقع قريب فى نفس الحى كحديقه عامه او طريق رئيسئ"/>
+                android:text="@string/location_hint"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
                 android:background="@color/gray"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
 
-                android:layout_marginEnd="@dimen/_10sdp"/>
+                android:layout_marginEnd="@dimen/_20sdp"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_60sdp"
@@ -157,8 +185,9 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="@dimen/_18sdp"
-                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
                 android:layout_height="wrap_content"
                 android:text="البيانات التاليه مخصصه لاداره التطبيق ولن تظهر لاطراف اخرى"/>
 
@@ -170,7 +199,7 @@
 
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="رقم السجل التجارى"/>
+                android:text="@string/commerical_number"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -199,7 +228,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="ارفاق صوره السجل التجارى"/>
+                android:text="@string/commercial_register_file"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -228,7 +257,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="اسم الشخص المخول"/>
+                android:text="@string/person_name"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -246,7 +275,6 @@
                     android:layout_height="match_parent"
 
                     android:drawablePadding="@dimen/_8sdp"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -267,7 +295,7 @@
 
                         android:textColor="@color/colorPrimary"
                         android:layout_height="wrap_content"
-                        android:text=" رقم الهاتف"/>
+                        android:text="@string/phone_number"/>
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -285,7 +313,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="@dimen/_8sdp"
-                            android:drawableStart="@drawable/ic_drop_down_arrow"
                             android:backgroundTint="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -303,7 +330,7 @@
 
                         android:textColor="@color/colorPrimary"
                         android:layout_height="wrap_content"
-                        android:text="رقم الجوال"/>
+                        android:text="@string/mobile_number"/>
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -321,7 +348,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="@dimen/_8sdp"
-                            android:drawableStart="@drawable/ic_drop_down_arrow"
                             android:backgroundTint="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -335,7 +361,7 @@
 
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="البريد الالكترونى"/>
+                android:text="@string/email"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -353,7 +379,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="@dimen/_8sdp"
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.button.MaterialButton

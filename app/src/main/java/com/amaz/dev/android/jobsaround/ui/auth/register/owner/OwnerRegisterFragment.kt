@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
@@ -18,6 +19,7 @@ import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
 import com.blankj.utilcode.util.UriUtils
 import kotlinx.android.synthetic.main.fragment_owner_register.*
+import kotlinx.android.synthetic.main.tool_bar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
@@ -52,6 +54,11 @@ class OwnerRegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        appBarTitle.text = getString(R.string.foundation_info)
+        toolBarIcon2.setImageDrawable(ContextCompat.getDrawable(context!!,R.drawable.ic_arrow_point_to_right))
+        toolBarIcon2.setOnClickListener { activity?.onBackPressed() }
+
+
         organizationImageTI.setOnClickListener { openGallery() }
         businessCommercialImageTIET.setOnClickListener { openFiles() }
         viewModel.error.observe(this , Observer {
@@ -62,12 +69,13 @@ class OwnerRegisterFragment : Fragment() {
 
 
         saveButton.setOnClickListener {
+            findNavController().navigate(R.id.action_ownerRegisterFragment_to_homeFragment)
             if (validateInputs()){
                 viewModel.registerOwner(ownerRegisterRequest).observe(this, Observer {
 
                     it?.let {
                         if (it) Toast.makeText(context,"تم التسجيل بنجاح",Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_ownerRegisterFragment_to_rulesFragment)
+//                        findNavController().navigate(R.id.action_ownerRegisterFragment_to_rulesFragment)
                     }
                 })
             }

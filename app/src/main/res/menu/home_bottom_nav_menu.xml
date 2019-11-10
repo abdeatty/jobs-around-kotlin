@@ -18,7 +18,7 @@
 
 
     <item
-        android:id="@+id/navigation_location"
+        android:id="@+id/menu"
         android:icon="@drawable/ic_location"
         android:title="@string/my_location" />
 

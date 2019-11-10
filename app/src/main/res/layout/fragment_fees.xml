@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar"
-        android:text="الرسوم"
+        android:text="@string/fees"
         android:textSize="@dimen/_12sdp"
         android:textColor="@color/colorPrimary"
         android:layout_margin="@dimen/_10sdp"/>
@@ -38,7 +38,7 @@
         android:textSize="@dimen/_12sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view1"
-        android:text="الرسوم مجانيه حاليا"
+        android:text="@string/fees_hint"
 
 
 
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
-        android:text="الحسابات البنكيه"
+        android:text="@string/bank_accounts"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toTopOf="@id/view2"
@@ -83,7 +83,7 @@
         android:textSize="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/blue"
-        android:text="رقم الحساب:"/>
+        android:text="@string/account_number"/>
 
     <TextView
         android:id="@+id/account_number_tv"
@@ -108,7 +108,7 @@
         android:textSize="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/blue"
-        android:text="اسم الحساب:"/>
+        android:text="@string/account_name"/>
 
     <TextView
         android:id="@+id/account_name_tv"
@@ -135,7 +135,7 @@
         android:textSize="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/blue"
-        android:text="رقم الايبان:"/>
+        android:text="@string/pen_number"/>
 
     <TextView
         android:id="@+id/iban_number_tv"
@@ -160,7 +160,7 @@
         android:textSize="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/blue"
-        android:text="البنك:"/>
+        android:text="@string/bank"/>
 
     <TextView
         android:id="@+id/bank_name_tv"
@@ -194,6 +194,7 @@
         android:layout_width="wrap_content"
         android:shadowColor="@color/blue"
         android:text="أتعهد بدفع الرسوم"
+        android:textColor="@color/colorPrimary"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layoutDirection="rtl"
         android:buttonTint="@color/colorPrimary"

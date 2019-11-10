@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -23,4 +24,9 @@ class SeekerInfoFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
 }

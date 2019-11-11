@@ -1,9 +1,6 @@
 package com.amaz.dev.android.jobsaround.repositories
 
-import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
-import com.amaz.dev.android.jobsaround.models.DataResult
-import com.amaz.dev.android.jobsaround.models.LoginResponse
-import com.amaz.dev.android.jobsaround.models.SeekerRegisterRequest
+import com.amaz.dev.android.jobsaround.models.*
 
 interface IJobsRepo {
 
@@ -11,4 +8,6 @@ interface IJobsRepo {
     suspend fun seekerRegister(seekerRegisterRequest: SeekerRegisterRequest) : DataResult<Boolean>
     suspend fun login(phoneNumber : String) : DataResult<LoginResponse>
     suspend fun verifiyCode(code : String) : DataResult<Boolean>
+    suspend fun getQualifications() : DataResult<List<Qualification>>
+    suspend fun getNationalities() : DataResult<List<Nationality>>
 }

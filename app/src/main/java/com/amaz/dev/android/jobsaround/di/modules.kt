@@ -10,6 +10,7 @@ import com.amaz.dev.android.jobsaround.network.Network
 import com.amaz.dev.android.jobsaround.network.RemoteDataSource
 import com.amaz.dev.android.jobsaround.ui.auth.login.LoginViewModel
 import com.amaz.dev.android.jobsaround.ui.auth.phoneverification.PhoneVerificationViewModel
+import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.auth.register.seeker.SeekerRegisterViewModel
 
 
@@ -28,6 +29,7 @@ private val viewModelModule = module {
     viewModel { SeekerRegisterViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { PhoneVerificationViewModel(get()) }
+    viewModel { LocationViewModel() }
 }
 
 fun getModules() : Array<Module>{

@@ -13,23 +13,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 
 import com.amaz.dev.android.jobsaround.R
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_map_dialog.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class MapDialogFragment : DialogFragment(), OnMapReadyCallback, View.OnClickListener {
+class MapDialogFragment : DialogFragment(), OnMapReadyCallback {
 
     private var mGoogleMap: GoogleMap? = null
+    private val viewMode : LocationViewModel by sharedViewModel()
 
 
 
@@ -41,28 +40,27 @@ class MapDialogFragment : DialogFragment(), OnMapReadyCallback, View.OnClickList
         val view = inflater.inflate(R.layout.fragment_map_dialog, container, false)
 
 
-//        initGoogleMap(savedInstanceState)
 
-        val mapFragment = activity?.supportFragmentManager
-            ?.findFragmentById(R.id.mapView) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-
-
-        //        getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         return view
     }
 
-    private fun initGoogleMap(savedInstanceState: Bundle?) {
-        var mapViewBundle: Bundle? = null
-        if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
+
+        confirmButton.setOnClickListener {
+
+            viewMode.setLatLang(
+                LatLng(
+                    mGoogleMap!!.cameraPosition.target.latitude,
+                    mGoogleMap!!.cameraPosition.target.longitude
+                )
+            )
+            dismiss()
         }
-        mapView!!.onCreate(mapViewBundle)
-        mapView!!.getMapAsync(this)
     }
-
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
@@ -97,45 +95,34 @@ class MapDialogFragment : DialogFragment(), OnMapReadyCallback, View.OnClickList
 
     override fun onResume() {
         super.onResume()
-        mapView!!.onResume()
+        mapView?.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        mapView!!.onPause()
+        mapView?.onPause()
     }
 
     override fun onStart() {
         super.onStart()
-        mapView!!.onStart()
+        mapView?.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mapView!!.onStop()
+        mapView?.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mapView!!.onDestroy()
+        mapView?.onDestroy()
 
 
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mapView!!.onLowMemory()
-    }
-
-    override fun onClick(view: View) {
-
-        when (view.id) {
-            R.id.confirmButton -> {
-                Toast.makeText(context, mGoogleMap!!.cameraPosition.target.longitude.toString() + "", Toast.LENGTH_SHORT).show()
-                Toast.makeText(context, mGoogleMap!!.cameraPosition.target.latitude.toString() + "", Toast.LENGTH_SHORT).show()
-                dismiss()
-            }
-        }
+        mapView?.onLowMemory()
     }
 
     companion object {

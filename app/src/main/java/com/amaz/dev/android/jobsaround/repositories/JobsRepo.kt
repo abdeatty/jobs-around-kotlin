@@ -1,12 +1,40 @@
 package com.amaz.dev.android.jobsaround.repositories
 
-import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
-import com.amaz.dev.android.jobsaround.models.DataResult
-import com.amaz.dev.android.jobsaround.models.LoginResponse
-import com.amaz.dev.android.jobsaround.models.SeekerRegisterRequest
+import com.amaz.dev.android.jobsaround.models.*
 import com.amaz.dev.android.jobsaround.network.RemoteDataSource
 
 class JobsRepo(private val  remoteDataSource: RemoteDataSource) : IJobsRepo {
+
+
+
+    override suspend fun getNationalities(): DataResult<List<Nationality>> {
+        return when(val result = remoteDataSource.getNationalities()){
+
+            is DataResult.Success ->{
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+
+
+    }
+
+
+    override suspend fun getQualifications(): DataResult<List<Qualification>> {
+
+        return when(val result = remoteDataSource.getQualifications()){
+
+            is DataResult.Success ->{
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+
+    }
 
     override suspend fun verifiyCode(code: String): DataResult<Boolean> {
         return when(val result = remoteDataSource.verifiyCode(code)){

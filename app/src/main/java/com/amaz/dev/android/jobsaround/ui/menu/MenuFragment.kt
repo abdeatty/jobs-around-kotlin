@@ -14,11 +14,15 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -33,6 +37,8 @@ import java.util.ArrayList
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_menu.*
+import kotlinx.android.synthetic.main.fragment_seeker_register.*
+import kotlinx.android.synthetic.main.tool_bar.*
 
 /**
  * A simple [Fragment] subclass.
@@ -55,19 +61,42 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
-        initGoogleMap(savedInstanceState)
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private fun initGoogleMap(savedInstanceState: Bundle?) {
-        var mapViewBundle: Bundle? = null
-        if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
+        mMapView.onCreate(savedInstanceState)
+        mMapView.getMapAsync(this)
+
+        toolBarIcon2.setImageDrawable(ContextCompat.getDrawable(context!!,R.drawable.ic_search_black_24dp))
+        toolBarIcon2.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_searchFragment) }
+
+
+        job_tv.setOnClickListener {
+            experience_tv.background = null
+            qualifications_tv.background = null
+            job_tv.background =
+                ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
         }
-        mMapView!!.onCreate(mapViewBundle)
-        mMapView!!.getMapAsync(this)
+
+        experience_tv.setOnClickListener {
+            qualifications_tv.background = null
+            job_tv.background = null
+            experience_tv.background =
+                ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
+        }
+
+
+        qualifications_tv.setOnClickListener {
+            job_tv.background = null
+            experience_tv.background = null
+            qualifications_tv.background =
+                ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
+        }
     }
+
 
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -85,12 +114,12 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
     override fun onMapReady(googleMap: GoogleMap) {
 
-        mGoogleMap = googleMap
 
+        mGoogleMap = googleMap
         addMarkersToMap()
         if (ActivityCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            googleMap.isMyLocationEnabled = true
+//            googleMap.isMyLocationEnabled = true
             return
         }
 
@@ -123,7 +152,7 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
                     marker.tag = "employee"
                 else
                     marker.tag = "company"
-                //                        mGoogleMap.setInfoWindowAdapter(customInfoWindowAdapter);
+                mGoogleMap!!.setInfoWindowAdapter(customInfoWindowAdapter)
                 mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latLngList[i].latitude, latLngList[i].longitude), 12.0f))
             }
 
@@ -148,34 +177,34 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
     override fun onResume() {
         super.onResume()
-        mMapView!!.onResume()
+        mMapView.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        mMapView!!.onPause()
+        mMapView.onPause()
     }
 
     override fun onStart() {
         super.onStart()
-        mMapView!!.onStart()
+        mMapView.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mMapView!!.onStop()
+        mMapView.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mMapView!!.onDestroy()
+//        mMapView.onDestroy()
 
 
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mMapView!!.onLowMemory()
+        mMapView.onLowMemory()
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
@@ -186,27 +215,6 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         return false
     }
 
-//    @OnClick(R.id.experience_tv)
-//    fun onExperienceTextViewClicked() {
-//        jobTv!!.background = null
-//        qualificationsTv!!.background = null
-//        experienceTv!!.background = resources.getDrawable(R.drawable.rect_light_blue)
-//    }
-//
-//    @OnClick(R.id.qualifications_tv)
-//    fun onQualificationsTextViewClicked() {
-//        jobTv!!.background = null
-//        experienceTv!!.background = null
-//        qualificationsTv!!.background = resources.getDrawable(R.drawable.rect_light_blue)
-//    }
-//
-//
-//    @OnClick(R.id.job_tv)
-//    fun onJobTextViewClicked() {
-//        experienceTv!!.background = null
-//        qualificationsTv!!.background = null
-//        jobTv!!.background = resources.getDrawable(R.drawable.rect_light_blue)
-//    }
 
     companion object {
 

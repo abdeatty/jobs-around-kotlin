@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
 import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_chat_list.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * A simple [Fragment] subclass.
@@ -36,7 +38,6 @@ class ChatListFragment : Fragment() , ItemClickListener<String> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initChatRv()
-
 
     }
 

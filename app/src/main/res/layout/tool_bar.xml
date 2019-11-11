@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:gravity="center"
     android:layoutDirection="ltr"
-
+    android:elevation="@dimen/_2sdp"
     android:background="@color/colorPrimary"
     app:layout_constraintTop_toTopOf="parent">
 

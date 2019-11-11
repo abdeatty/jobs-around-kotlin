@@ -4,22 +4,27 @@ package com.amaz.dev.android.jobsaround.ui.auth.register.owner
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
+import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
+import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import com.blankj.utilcode.util.UriUtils
 import kotlinx.android.synthetic.main.fragment_owner_register.*
+import kotlinx.android.synthetic.main.fragment_owner_register.saveButton
 import kotlinx.android.synthetic.main.tool_bar.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
@@ -27,8 +32,9 @@ import java.io.File
 
 private const val RC_OPEN_DECUMENTATION = 1000
 private const val GALLERY_CODE = 100
-private const val DOCUMENT_CODE = 100
+private const val DOCUMENT_CODE = 101
 private const val _READ_PERMISSION_CODE = 170
+private const val LOCATION_PERMISSION_REQUEST_CODE = 1
 
 
 /**
@@ -37,9 +43,12 @@ private const val _READ_PERMISSION_CODE = 170
 class OwnerRegisterFragment : Fragment() {
 
     private val viewModel : OwnerRegisterViewModel by viewModel()
+    private val locationViewModel : LocationViewModel by sharedViewModel()
     private val ownerRegisterRequest by lazy { OwnerRegisterRequest()}
     private  var organizationImage : File ? =null
     private  var businessCommercialFile : File ? = null
+    private var latitiude : Double = 0.0
+    private var longitude : Double  =0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,11 +69,18 @@ class OwnerRegisterFragment : Fragment() {
 
 
         organizationImageTI.setOnClickListener { openGallery() }
+        mapImgV.setOnClickListener { openMapFragment() }
         businessCommercialImageTIET.setOnClickListener { openFiles() }
         viewModel.error.observe(this , Observer {
             it?.let {
                 Toast.makeText(context ,it,Toast.LENGTH_SHORT).show()
             }
+        })
+
+        locationViewModel.latLng.observe(this , Observer {
+            latitiude = it.latitude
+            longitude = it.longitude
+
         })
 
 
@@ -82,6 +98,24 @@ class OwnerRegisterFragment : Fragment() {
 
 
         }
+    }
+
+    private fun openMapFragment(){
+
+        if (ActivityCompat.checkSelfPermission(context!!,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity!!,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+
+        var mapFragment = activity?.supportFragmentManager?.findFragmentByTag("map_fragment")
+        if (mapFragment != null) transaction?.remove(mapFragment)
+        transaction?.addToBackStack(null)
+        var dialogMapFragment =  MapDialogFragment()
+        dialogMapFragment.show(transaction!! , "map_fragment")
     }
 
     @AfterPermissionGranted(RC_OPEN_DECUMENTATION)
@@ -137,7 +171,6 @@ class OwnerRegisterFragment : Fragment() {
 
 
                              organizationImage = UriUtils.uri2File(it)
-                             businessCommercialFile = UriUtils.uri2File(it)
                              organizationImage?.name?.let { fileName ->
                                  organizationImageTI.setText(fileName)
                              }
@@ -208,8 +241,8 @@ class OwnerRegisterFragment : Fragment() {
         ownerRegisterRequest.buildName = organizationNameTIET.text.toString()
         ownerRegisterRequest.email = emailTIET.text.toString()
         ownerRegisterRequest.icon = organizationImage
-        ownerRegisterRequest.latitude = 29.325655
-        ownerRegisterRequest.longitude = 32.23659
+        ownerRegisterRequest.latitude = latitiude
+        ownerRegisterRequest.longitude = longitude
         ownerRegisterRequest.registerImage = businessCommercialFile
         ownerRegisterRequest.phone = phoneTIET.text.toString()
         ownerRegisterRequest.phoneNumber = phoneNumberTIET.text.toString()

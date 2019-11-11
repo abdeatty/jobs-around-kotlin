@@ -1,5 +1,7 @@
 package com.amaz.dev.android.jobsaround.network
 
+import com.amaz.dev.android.jobsaround.models.ApiResponse
+import com.amaz.dev.android.jobsaround.models.Nationality
 import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
 import com.amaz.dev.android.jobsaround.models.SeekerRegisterRequest
 
@@ -55,5 +57,9 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun verifiyCode(code : String) = safeApiCall {
         api.verifyCode(code)
     }
+
+    suspend fun getQualifications() = safeApiCall { api.getQualifications() }
+
+    suspend fun getNationalities() = safeApiCall { api.getNationalities() }
 }
 

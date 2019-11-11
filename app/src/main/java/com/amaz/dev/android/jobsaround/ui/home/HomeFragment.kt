@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,7 +24,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : Fragment() {
 
-    lateinit var  bottomNav : BottomNavigationView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,24 +41,16 @@ class HomeFragment : Fragment() {
         bottomNavView.setupWithNavController(navController)
 
 
-    }
 
-    public fun hideBottomNav() {
 
-        bottomNav.visibility = View.INVISIBLE
-    }
-
-    companion object{
-
-        fun hideBottomNav(a : HomeFragment){
-            a.hideBottomNav()
+        navController.addOnDestinationChangedListener { _, navDestination: NavDestination, _ ->
+            if (navDestination.id == R.id.menuFragment || navDestination.id == R.id.profileFragment || navDestination.id == R.id.chatUserListFragment) {
+                bottomNavView.visibility = View.VISIBLE
+            } else {
+                bottomNavView.visibility = View.GONE
+            }
         }
 
 
     }
-
-
-
-
-
 }

@@ -50,4 +50,6 @@
     <string name="gender">الجنس</string>
     <string name="seeker_info">بيانات الباحث عن عمل</string>
     <string name="add_job">Add Job</string>
+    <string name="search">بحث</string>
+    <string name="desc_hint">وصف مختصر عن الخبرات السابقه ان وجدت</string>
 </resources>

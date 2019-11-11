@@ -41,10 +41,18 @@
             app:destination="@+id/feesFragment"/>
     </fragment>
 
+    <fragment android:id="@+id/searchFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.search.SearchFragment"
+         tools:layout="@layout/fragment_search"/>
+
     <fragment android:id="@+id/menuFragment"
         tools:layout="@layout/fragment_menu"
         android:label="@string/menu"
-        android:name="com.amaz.dev.android.jobsaround.ui.menu.MenuFragment"/>
+        android:name="com.amaz.dev.android.jobsaround.ui.menu.MenuFragment">
+
+        <action android:id="@+id/action_menuFragment_to_searchFragment"
+            app:destination="@+id/searchFragment"/>
+    </fragment>
 
     <fragment android:name="com.amaz.dev.android.jobsaround.ui.fees.FeesFragment"
         tools:layout="@layout/fragment_fees"

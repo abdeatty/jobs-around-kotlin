@@ -1,7 +1,6 @@
 package com.amaz.dev.android.jobsaround.ui.chat_list;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ public class ChatFreindsAdapter extends RecyclerView.Adapter<ChatFreindsAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_user_item,parent,false);
         return new ViewHolder(view);
     }
 

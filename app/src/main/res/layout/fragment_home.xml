@@ -7,6 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavView"
         android:layout_width="0dp"

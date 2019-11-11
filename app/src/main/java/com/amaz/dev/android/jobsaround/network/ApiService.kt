@@ -58,6 +58,13 @@ interface ApiService {
     @FormUrlEncoded
     @POST("verify/code")
     suspend fun verifyCode(@Field("code") code : String) : ApiResponse<VerifiyCodeResponse>
+
+
+    @GET("qualifications")
+    suspend fun getQualifications() : ApiResponse<List<Qualification>>
+
+    @GET("nationals")
+    suspend fun getNationalities() : ApiResponse<List<Nationality>>
 }
 
 

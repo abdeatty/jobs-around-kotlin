@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_seeker_jobs.*
 class SeekerJobsFragment : Fragment() ,ItemClickListener<String>{
 
     override fun onItemClicked(item: String) {
-        findNavController().navigate(R.id.action_myJobsFragment_to_jobDetailsFragment)
+        findNavController().navigate(R.id.action_seekerJobsFragment_to_jobDetailsFragment)
     }
 
     private val adapter by lazy { SeekerJobsAdapter(context!!,this) }

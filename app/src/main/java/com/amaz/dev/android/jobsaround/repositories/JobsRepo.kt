@@ -71,6 +71,7 @@ class JobsRepo(private val  remoteDataSource: RemoteDataSource , private val con
             is DataResult.Success -> {
                 Network.authToken = result.content?.accessToken
                 SharedPreferencesManager.setStringValue(context,Constants.TOKEN,result.content?.accessToken)
+                SharedPreferencesManager.setIntValue(context,Constants.USER_TYPE,result.content?.type!!)
                 DataResult.Success(true)
             }
             is DataResult.Error -> {

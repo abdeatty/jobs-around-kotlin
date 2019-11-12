@@ -30,8 +30,8 @@
         <action android:id="@+id/action_profileFragment_to_createJobFragment"
             app:destination="@id/createJobFragment"/>
 
-        <action android:id="@+id/action_profileFragment_to_myJobFragment"
-            app:destination="@+id/myJobsFragment"/>
+        <action android:id="@+id/action_profileFragment_to_seekerJobFragment"
+            app:destination="@+id/seekerJobsFragment"/>
 
         <action android:id="@+id/action_profileFragment_to_seekerInfoFragment"
             app:destination="@+id/seekerInfoFragment"/>
@@ -39,6 +39,9 @@
 
         <action android:id="@+id/action_profileFragment_to_feesFragment"
             app:destination="@+id/feesFragment"/>
+
+        <action android:id="@+id/action_profileFragment_to_ownerJobsFragment"
+            app:destination="@+id/ownerJobsFragment"/>
     </fragment>
 
     <fragment android:id="@+id/searchFragment"
@@ -63,12 +66,12 @@
         android:name="com.amaz.dev.android.jobsaround.ui.createJob.CreateJobFragment"
         android:label="CreateJob"/>
 
-    <fragment android:id="@+id/myJobsFragment"
+    <fragment android:id="@+id/seekerJobsFragment"
         android:label="MyJobs"
         android:name="com.amaz.dev.android.jobsaround.ui.seekerJobs.SeekerJobsFragment"
         tools:layout="@layout/fragment_seeker_jobs">
 
-        <action android:id="@+id/action_myJobsFragment_to_jobDetailsFragment"
+        <action android:id="@+id/action_seekerJobsFragment_to_jobDetailsFragment"
             app:destination="@id/jobDetailsFragment"/>
     </fragment>
 
@@ -82,7 +85,9 @@
         android:name="com.amaz.dev.android.jobsaround.ui.seekerInfo.SeekerInfoFragment"/>
 
 
-    <fragment android:id="@+id/searchFragment"
-        android:name="com.amaz.dev.android.jobsaround.ui.search.SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+
+    <fragment android:id="@+id/ownerJobsFragment"
+        android:name="com.amaz.dev.android.jobsaround.ui.ownerJobs.OwnerJobsFragment"
+          tools:layout="@layout/fragment_owner_jobs"
+        android:label="OwnerJobs"/>
 </navigation>

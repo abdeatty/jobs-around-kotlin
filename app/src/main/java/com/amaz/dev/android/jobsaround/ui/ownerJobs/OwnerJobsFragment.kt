@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 
 import com.amaz.dev.android.jobsaround.R
+import kotlinx.android.synthetic.main.fragment_owner_jobs.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -18,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class OwnerJobsFragment : Fragment() {
 
     private val viewModel : OwnerJobsViewModel by viewModel()
+    private val adapter by lazy { OwnerJobsAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +31,9 @@ class OwnerJobsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        jobsRV.setHasFixedSize(true)
+        jobsRV.adapter = adapter
+
         viewModel.error.observe(this , Observer {
             it?.let {
                 Toast.makeText(context ,it ,Toast.LENGTH_LONG).show()
@@ -37,9 +42,13 @@ class OwnerJobsFragment : Fragment() {
 
         viewModel.getOwnerJobs().observe(this , Observer {
 
+            it?.let {
+                adapter.submitList(it)
+            }
             Toast.makeText(context,it.size,Toast.LENGTH_LONG).show()
         })
     }
+
 
 
 }

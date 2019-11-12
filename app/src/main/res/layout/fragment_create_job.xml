@@ -37,6 +37,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/jobTitleEt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"/>
@@ -84,6 +85,7 @@
                 android:layout_marginTop="@dimen/_10sdp"/>
 
             <ImageView
+                android:id="@+id/mapImgView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/ic_map"
@@ -98,7 +100,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
-                android:text="وصف مختصر عن الوظيفه"/>
+                android:text="@string/job_desc_label"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -116,6 +118,7 @@
                 android:layout_height="@dimen/_100sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/jobDescEt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="top"
@@ -130,6 +133,7 @@
 
 
                 <RadioGroup
+                    android:id="@+id/genderRG"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -158,7 +162,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="الجنس"
+                    android:text="@string/gender"
                     android:layout_margin="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
@@ -176,13 +180,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:gravity="center"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:boxStrokeColor="@color/colorPrimary"
                 app:boxStrokeWidth="@dimen/_4sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_height="@dimen/_45sdp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:id="@+id/qualificationTV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_drop_down_arrow"
@@ -209,6 +215,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/yearsOfExperienceET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_drop_down_arrow"
@@ -240,15 +247,16 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/englishLevelGoodTV"
                         android:layout_width="0dp"
                         android:text="جيد"
-
                         android:padding="@dimen/_4sdp"
                         android:textColor="@color/colorPrimary"
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                     <TextView
+                        android:id="@+id/englishLevelIntermediateTV"
                         android:layout_width="0dp"
                         android:text="متوسط"
                         android:padding="@dimen/_4sdp"
@@ -259,6 +267,7 @@
                         android:layout_weight="1"/>
 
                     <TextView
+                        android:id="@+id/englishLevelBeginnerTV"
                         android:layout_width="0dp"
                         android:text="مبتدئ"
 
@@ -270,6 +279,7 @@
                 </LinearLayout>
 
                 <RadioGroup
+                    android:id="@+id/englishRG"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
@@ -352,6 +362,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/fullTimeJobTV"
                     android:layout_width="wrap_content"
                     android:text="كامل"
 
@@ -363,6 +374,7 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"/>
                 <TextView
+                    android:id="@+id/partTimeJobTV"
                     android:layout_width="wrap_content"
                     android:text="جزئي"
                     android:paddingStart="@dimen/_10sdp"
@@ -379,6 +391,7 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/createJobButton"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_20sdp"

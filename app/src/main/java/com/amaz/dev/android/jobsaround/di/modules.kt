@@ -12,6 +12,8 @@ import com.amaz.dev.android.jobsaround.ui.auth.login.LoginViewModel
 import com.amaz.dev.android.jobsaround.ui.auth.phoneverification.PhoneVerificationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.auth.register.seeker.SeekerRegisterViewModel
+import com.amaz.dev.android.jobsaround.ui.createJob.CreateJobViewModel
+import com.amaz.dev.android.jobsaround.ui.ownerJobs.OwnerJobsViewModel
 
 
 private val network =  module {
@@ -20,7 +22,7 @@ private val network =  module {
 
 private val remoteModule = module { factory { RemoteDataSource(get()) } }
 
-private val repositoryModule = module { single<IJobsRepo> {JobsRepo(get())} }
+private val repositoryModule = module { single<IJobsRepo> {JobsRepo(get() , get())} }
 
 private val viewModelModule = module {
 
@@ -30,6 +32,8 @@ private val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { PhoneVerificationViewModel(get()) }
     viewModel { LocationViewModel() }
+    viewModel { CreateJobViewModel(get()) }
+    viewModel { OwnerJobsViewModel(get()) }
 }
 
 fun getModules() : Array<Module>{

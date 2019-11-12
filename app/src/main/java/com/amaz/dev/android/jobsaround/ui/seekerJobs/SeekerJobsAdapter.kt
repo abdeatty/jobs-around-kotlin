@@ -1,4 +1,4 @@
-package com.amaz.dev.android.jobsaround.ui.myJobs
+package com.amaz.dev.android.jobsaround.ui.seekerJobs
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
 
 
-class MyJobsAdapter(private val context: Context, private var itemClickListener : ItemClickListener<String>) : RecyclerView.Adapter<MyJobsAdapter.ViewHolder>() {
+class SeekerJobsAdapter(private val context: Context, private var itemClickListener : ItemClickListener<String>) : RecyclerView.Adapter<SeekerJobsAdapter.ViewHolder>() {
 
 
 

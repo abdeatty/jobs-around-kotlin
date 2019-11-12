@@ -40,7 +40,7 @@ class FeesFragment : Fragment() {
 
 
         nextButton.setOnClickListener {
-            if (SharedPreferencesManager.getIntValue(context!!,Constants.USER_TYPE) == 0)
+            if (SharedPreferencesManager.getIntValue(context!!,Constants.USER_TYPE) == 1)
             findNavController().navigate(R.id.action_feesFragment_to_ownerRegisterFragment)
             else
             findNavController().navigate(R.id.action_feesFragment_to_seekerRegisterFragment)

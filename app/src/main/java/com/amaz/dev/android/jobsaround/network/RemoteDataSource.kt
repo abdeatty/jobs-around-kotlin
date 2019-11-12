@@ -1,9 +1,7 @@
 package com.amaz.dev.android.jobsaround.network
 
-import com.amaz.dev.android.jobsaround.models.ApiResponse
-import com.amaz.dev.android.jobsaround.models.Nationality
-import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
-import com.amaz.dev.android.jobsaround.models.SeekerRegisterRequest
+import android.util.Log
+import com.amaz.dev.android.jobsaround.models.*
 
 
 class RemoteDataSource(private val api: ApiService) {
@@ -12,12 +10,12 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun ownerRegister(orr: OwnerRegisterRequest) = safeApiCall {
         api.ownerRegister(
             createTextBody(orr.buildName!!),
-            createFileBody("icon", orr.icon!!,"icon"),
+            createFileBody("icon", orr.icon!!, "icon"),
             createTextBody(orr.activity!!),
             createTextBody(orr.latitude.toString()),
             createTextBody(orr.longitude.toString()),
             createTextBody(orr.registrationNumber!!),
-            createFileBody("registerImage",orr.registerImage!!,"registerImage"),
+            createFileBody("registerImage", orr.registerImage!!, "registerImage"),
             createTextBody(orr.username!!),
             createTextBody(orr.phoneNumber!!),
             createTextBody(orr.phone!!),
@@ -45,21 +43,31 @@ class RemoteDataSource(private val api: ApiService) {
             createTextBody(srr.longitude.toString()),
             createTextBody(srr.birthdayHegire!!),
             createTextBody(srr.birthdayGregorian!!),
-            createFileBody("avatar",srr.avatar!!,"avatar"),
-            createFileBody("resume",srr.resume!!,"resume")
+            createFileBody("avatar", srr.avatar!!, "avatar"),
+            createFileBody("resume", srr.resume!!, "resume")
         )
     }
 
-    suspend fun login(phoneNumber : String) = safeApiCall {
+    suspend fun login(phoneNumber: String) = safeApiCall {
         api.login(phoneNumber)
     }
 
-    suspend fun verifiyCode(code : String) = safeApiCall {
+    suspend fun verifiyCode(code: String) = safeApiCall {
         api.verifyCode(code)
     }
 
     suspend fun getQualifications() = safeApiCall { api.getQualifications() }
 
     suspend fun getNationalities() = safeApiCall { api.getNationalities() }
-}
 
+    suspend fun createJobForOwner(cjr: CreateJobRequest) = safeApiCall {
+
+
+        api.createJobForOwner(cjr.jobTitle!!,cjr.description!!,cjr.gender!!,cjr.qualification!!,cjr.experience!!,cjr.english!!,cjr.englishDegree!!,
+            cjr.national!!,cjr.latitude!!,cjr.longitude!!,cjr.jobType!!,cjr.buildName!!,cjr.buildLogo!!)
+
+    }
+
+    suspend fun getOwnerJobs() = safeApiCall { api.getOwnerJobs() }
+
+}

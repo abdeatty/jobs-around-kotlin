@@ -1,6 +1,7 @@
 package com.amaz.dev.android.jobsaround.network
 
 import com.amaz.dev.android.jobsaround.models.*
+import com.amaz.dev.android.jobsaround.network.Network.REQUIRE_AUTHENTICATION
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -65,6 +66,35 @@ interface ApiService {
 
     @GET("nationals")
     suspend fun getNationalities() : ApiResponse<List<Nationality>>
+
+
+
+    @GET("owner/job/list")
+    @Headers("$REQUIRE_AUTHENTICATION: true")
+    suspend fun getOwnerJobs() : ApiResponse<List<OwnerJobResponse>>
+
+
+    @FormUrlEncoded
+    @POST("owner/job/adds")
+    @Headers("$REQUIRE_AUTHENTICATION: true")
+    suspend fun createJobForOwner(
+        @Field("jobTitle") jobTitle : String,
+                                  @Field("description") description : String,
+                                  @Field("gender") gender : Int,
+                                  @Field("qualification") qualification : Int,
+                                  @Field("experiance") experience : Int,
+                                  @Field("english") english : Int,
+                                  @Field("englishDegree") englishDegree : Int,
+                                  @Field("national") national : Int,
+                                  @Field("latitude") latitude : Double,
+                                  @Field("longitude") longitude : Double,
+                                  @Field("jobType") jobType : Int,
+                                  @Field("buildName") buildName : Int,
+                                  @Field("buildLogo") buildLogo : Int
+    ) : ApiResponse<CreateJobResponse>
+
+
+
 }
 
 

@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
             }
             viewModel.login(phoneNumberTi.text.toString()).observe(this , Observer {
 
-                it?.let {
+                if (it != null){
                     var bundel = Bundle()
                     bundel.putString("code" ,it.code)
                     findNavController().navigate(R.id.action_loginFragment_to_phoneVerification ,bundel)

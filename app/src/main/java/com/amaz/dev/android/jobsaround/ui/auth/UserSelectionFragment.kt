@@ -34,12 +34,12 @@ class UserSelectionFragment : Fragment() {
         appBarTitle.text = getString(R.string.new_register)
 
         ownerTV.setOnClickListener {
-            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,0)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,1)
             findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 
         seekerTV.setOnClickListener {
-            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,1)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,2)
             findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 

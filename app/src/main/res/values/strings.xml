@@ -41,7 +41,7 @@
     <string name="mobile_number">رقم الجوال</string>
     <string name="email">البريد الالكترونى</string>
     <string name="family_name">اسم العائله</string>
-    <string name="middel_name">الاسم الثانى</string>
+    <string name="meddil_name">الاسم الثانى</string>
     <string name="first_name">الاسم الاول</string>
     <string name="birthday_format">العام/الشهر/اليوم</string>
     <string name="birthday">تاريخ الميلاد</string>
@@ -52,4 +52,5 @@
     <string name="add_job">Add Job</string>
     <string name="search">بحث</string>
     <string name="desc_hint">وصف مختصر عن الخبرات السابقه ان وجدت</string>
+    <string name="job_desc_label">وصف مختصر عن الوظيفه</string>
 </resources>

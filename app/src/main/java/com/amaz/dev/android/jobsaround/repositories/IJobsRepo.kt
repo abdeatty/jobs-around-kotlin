@@ -10,4 +10,6 @@ interface IJobsRepo {
     suspend fun verifiyCode(code : String) : DataResult<Boolean>
     suspend fun getQualifications() : DataResult<List<Qualification>>
     suspend fun getNationalities() : DataResult<List<Nationality>>
+    suspend fun createJobForOwner(createJobRequest: CreateJobRequest) : DataResult<Boolean>
+    suspend fun getOwnerJobs() : DataResult<List<OwnerJobResponse>>
 }

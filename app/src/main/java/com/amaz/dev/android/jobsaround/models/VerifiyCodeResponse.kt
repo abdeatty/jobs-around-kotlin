@@ -4,11 +4,11 @@ package com.amaz.dev.android.jobsaround.models
 import com.squareup.moshi.Json
 
 data class VerifiyCodeResponse(
-    @Json(name = "access_token")
+    @field:Json(name = "access_token")
     var accessToken: String?,
-    @Json(name = "token_type")
+    @field:Json(name = "token_type")
     var tokenType: String?,
-    @Json(name = "type")
+    @field:Json(name = "type")
     var type: Int?,
     @Json(name = "user")
     var user: User?

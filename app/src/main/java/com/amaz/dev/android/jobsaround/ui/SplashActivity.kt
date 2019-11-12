@@ -2,11 +2,15 @@ package com.amaz.dev.android.jobsaround.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.AnimationUtils
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.helpers.Constants
+import com.android.airbag.helpers.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +38,7 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                     MainActivity.start(this@SplashActivity)
-//                    if (isLoggedIn && !authToken.isNullOrEmpty()) {
-//                        Network.authToken = authToken
-//                        val intent = Intent(this@SplashActivity, MainActivity::class.java)
-//                        startActivity(intent)
-//                    } else {
-//                        val intent = Intent(this@SplashActivity, LoginActivity::class.java)
-//                        startActivity(intent)
-//                    }
+
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 } finally {

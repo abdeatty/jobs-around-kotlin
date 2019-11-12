@@ -1,10 +1,40 @@
 package com.amaz.dev.android.jobsaround.repositories
 
+import android.content.Context
+import com.amaz.dev.android.jobsaround.helpers.Constants
 import com.amaz.dev.android.jobsaround.models.*
+import com.amaz.dev.android.jobsaround.network.Network
 import com.amaz.dev.android.jobsaround.network.RemoteDataSource
+import com.android.airbag.helpers.SharedPreferencesManager
 
-class JobsRepo(private val  remoteDataSource: RemoteDataSource) : IJobsRepo {
+class JobsRepo(private val  remoteDataSource: RemoteDataSource , private val context: Context) : IJobsRepo {
 
+
+    override suspend fun getOwnerJobs(): DataResult<List<OwnerJobResponse>> {
+
+        return when(val result = remoteDataSource.getOwnerJobs()){
+            is DataResult.Success -> {
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
+
+
+    override suspend fun createJobForOwner(createJobRequest: CreateJobRequest): DataResult<Boolean> {
+
+        return when(val result = remoteDataSource.createJobForOwner(createJobRequest)){
+
+            is DataResult.Success ->{
+                DataResult.Success(true)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
 
 
     override suspend fun getNationalities(): DataResult<List<Nationality>> {
@@ -39,6 +69,8 @@ class JobsRepo(private val  remoteDataSource: RemoteDataSource) : IJobsRepo {
     override suspend fun verifiyCode(code: String): DataResult<Boolean> {
         return when(val result = remoteDataSource.verifiyCode(code)){
             is DataResult.Success -> {
+                Network.authToken = result.content?.accessToken
+                SharedPreferencesManager.setStringValue(context,Constants.TOKEN,result.content?.accessToken)
                 DataResult.Success(true)
             }
             is DataResult.Error -> {

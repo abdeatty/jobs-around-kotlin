@@ -218,9 +218,6 @@
                 android:layoutDirection="rtl"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                app:passwordToggleEnabled="true"
-
-
                 app:passwordToggleTint="@color/blue"
                 android:layout_height="@dimen/_45sdp">
 

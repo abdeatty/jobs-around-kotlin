@@ -606,7 +606,7 @@
                 android:layout_height="@dimen/_45sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/cvTI"
+                    android:id="@+id/resumeTI"
                     android:editable="false"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

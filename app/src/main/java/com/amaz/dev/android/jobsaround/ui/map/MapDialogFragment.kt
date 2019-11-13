@@ -3,6 +3,7 @@ package com.amaz.dev.android.jobsaround.ui.map
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 
 import androidx.core.app.ActivityCompat
@@ -13,8 +14,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.amaz.dev.android.jobsaround.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
@@ -28,7 +33,8 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class MapDialogFragment : DialogFragment(), OnMapReadyCallback {
 
     private var mGoogleMap: GoogleMap? = null
-    private val viewMode : LocationViewModel by sharedViewModel()
+    private lateinit var  fusedLocationClient : FusedLocationProviderClient
+    private val viewModel : LocationViewModel by sharedViewModel()
 
 
 
@@ -47,12 +53,15 @@ class MapDialogFragment : DialogFragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity!!)
+
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
         confirmButton.setOnClickListener {
 
-            viewMode.setLatLang(
+            viewModel.setLatLang(
                 LatLng(
                     mGoogleMap!!.cameraPosition.target.latitude,
                     mGoogleMap!!.cameraPosition.target.longitude
@@ -76,6 +85,13 @@ class MapDialogFragment : DialogFragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
 
         mGoogleMap = googleMap
+
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                // Got last known location. In some rare situations this can be null.
+                googleMap?.animateCamera(CameraUpdateFactory.
+                    newLatLngZoom(LatLng(location?.latitude ?: 0.0 ,location?.longitude ?: 0.0), 16F))
+            }
 
         if (ActivityCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION) !=
             PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(

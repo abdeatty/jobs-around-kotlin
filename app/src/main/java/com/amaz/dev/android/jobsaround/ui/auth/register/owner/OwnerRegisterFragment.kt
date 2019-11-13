@@ -5,6 +5,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,8 @@ import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import com.blankj.utilcode.util.UriUtils
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,17 +37,18 @@ import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import java.io.File
 
-private const val RC_OPEN_DECUMENTATION = 1000
-private const val GALLERY_CODE = 100
-private const val DOCUMENT_CODE = 101
-private const val _READ_PERMISSION_CODE = 170
-private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-private lateinit var mGoogleMap : GoogleMap
+
 
 
 /**
  * A simple [Fragment] subclass.
  */
+
+private const val RC_OPEN_DECUMENTATION = 1000
+private const val GALLERY_CODE = 100
+private const val DOCUMENT_CODE = 101
+private const val _READ_PERMISSION_CODE = 170
+private const val LOCATION_PERMISSION_REQUEST_CODE = 1
 class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapClickListener {
     override fun onMapClick(p0: LatLng?) {
         openMapFragment()
@@ -56,6 +60,8 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
         googleMap?.setOnMapClickListener(this)
     }
 
+
+    private lateinit var mGoogleMap : GoogleMap
     private val viewModel : OwnerRegisterViewModel by viewModel()
     private val locationViewModel : LocationViewModel by sharedViewModel()
     private val ownerRegisterRequest by lazy { OwnerRegisterRequest()}
@@ -63,6 +69,8 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
     private  var businessCommercialFile : File ? = null
     private var latitiude : Double = 0.0
     private var longitude : Double  =0.0
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -95,9 +103,13 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
         })
 
         locationViewModel.latLng.observe(this , Observer {
-            latitiude = it.latitude
-            longitude = it.longitude
-            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitiude , longitude), 16F))
+
+            it?.let {
+                latitiude = it.latitude
+                longitude = it.longitude
+                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitiude , longitude), 16F))
+            }
+
 
         })
 
@@ -189,6 +201,7 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
 
 
                              organizationImage = UriUtils.uri2File(it)
+                             organizationImageTI.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct, 0, 0, 0);
                          } catch (e: Exception) {
                              e.printStackTrace()
                          }
@@ -200,6 +213,7 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
                     data?.data?.let {
                         try {
                             businessCommercialFile = UriUtils.uri2File(it)
+                            businessCommercialImageTIET.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct, 0, 0, 0);
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
@@ -276,6 +290,7 @@ class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapCli
     override fun onPause() {
         super.onPause()
         mapView?.onPause()
+        locationViewModel.latLng.value = null
     }
 
     override fun onStop() {

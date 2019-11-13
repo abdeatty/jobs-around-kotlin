@@ -29,9 +29,9 @@ import kotlinx.android.synthetic.main.fragment_create_job.englishRG
 import kotlinx.android.synthetic.main.fragment_create_job.genderRG
 import kotlinx.android.synthetic.main.fragment_create_job.mapView
 import kotlinx.android.synthetic.main.fragment_create_job.qualificationTV
-import kotlinx.android.synthetic.main.fragment_owner_register.*
 import kotlinx.android.synthetic.main.fragment_profile.createJobButton
 import kotlinx.android.synthetic.main.tool_bar.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -53,13 +53,13 @@ class CreateJobFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapClickL
     override fun onMapReady(googleMap: GoogleMap?) {
 
         mGoogleMap = googleMap!!
-        googleMap?.setOnMapClickListener(this)
+        mGoogleMap?.setOnMapClickListener(this)
     }
 
 
 
     private val viewModel: CreateJobViewModel by viewModel()
-    private val locationViewModel: LocationViewModel by viewModel()
+    private val locationViewModel: LocationViewModel by sharedViewModel()
     private val createJobRequest by lazy { CreateJobRequest() }
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
@@ -96,8 +96,8 @@ class CreateJobFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapClickL
 
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
+
         locationViewModel.latLng.observe(this, Observer {
-            Toast.makeText(context,"${it.latitude}",Toast.LENGTH_LONG).show()
             it?.let {
                 latitude = it.latitude
                 longitude = it.longitude
@@ -281,6 +281,7 @@ class CreateJobFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapClickL
     override fun onPause() {
         super.onPause()
         mapView?.onPause()
+        locationViewModel.latLng.value = null
     }
 
     override fun onStop() {

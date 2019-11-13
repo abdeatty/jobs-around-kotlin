@@ -30,7 +30,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.android.synthetic.main.fragment_owner_register.*
 import kotlinx.android.synthetic.main.fragment_owner_register.saveButton
 import kotlinx.android.synthetic.main.fragment_seeker_register.*
 import kotlinx.android.synthetic.main.fragment_seeker_register.mapView
@@ -70,8 +69,7 @@ class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapC
 
         mGoogleMap = googleMap!!
         googleMap?.setOnMapClickListener(this)
-//        var latLng : LatLng = LatLng(googleMap?.myLocation!!.latitude,googleMap.myLocation.longitude)
-//        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16F))
+//
     }
 
     private val viewModel: SeekerRegisterViewModel by viewModel()
@@ -176,14 +174,17 @@ class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapC
             jobType = 1
         }
 
-        cvTI.setOnClickListener { openFiles() }
+        resumeTI.setOnClickListener { openFiles() }
         profilePicImage.setOnClickListener { openGallery() }
 
 
         locationViewModel.latLng.observe(this, Observer {
-            latitude = it.latitude
-            longitude = it.longitude
-        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude , longitude), 16F))
+            it?.let {
+                latitude = it.latitude
+                longitude = it.longitude
+                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude , longitude), 16F))
+            }
+
         })
         viewModel.error.observe(this, Observer {
 
@@ -381,7 +382,7 @@ class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapC
                         try {
 
                             resume = UriUtils.uri2File(it)
-
+                            resumeTI.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_correct, 0, 0, 0);
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
@@ -485,6 +486,7 @@ class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapC
     override fun onPause() {
         super.onPause()
         mapView?.onPause()
+        locationViewModel.latLng.value = null
     }
 
     override fun onStop() {

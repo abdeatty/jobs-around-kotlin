@@ -15,8 +15,8 @@ class SeekerRegisterRequest(
     var english: Int? = null,
     var englishDegree: Int? = null,
     var jobType: Int? = null,
-    var qualification: String? = null,
-    var specialization: String? = null,
+    var qualification: Int? = null,
+    var specialization: Int? = null,
     var yearsExperience: Int? = null,
     var description: String? = null,
     var birthdayHegire: String? = null, //1/9/1233

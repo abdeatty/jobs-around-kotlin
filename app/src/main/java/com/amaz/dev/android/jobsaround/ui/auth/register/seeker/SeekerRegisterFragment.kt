@@ -13,16 +13,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
-import com.amaz.dev.android.jobsaround.models.SeekerRegisterRequest
+import com.amaz.dev.android.jobsaround.models.*
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import com.blankj.utilcode.util.UriUtils
@@ -46,13 +45,20 @@ private const val GALLERY_CODE = 100
 private const val DOCUMENT_CODE = 110
 private const val _READ_PERMISSION_CODE = 170
 private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+private var nationalID: Int? = null
+private var qualificationsID =  MutableLiveData<Int>()
+private var specializationID: Int? = null
+private var yearOfExperienceID: Int? = null
+private lateinit var qualificationList : List<Qualification>
+private lateinit var nationalList : List<Nationality>
+private lateinit var specializationList : List<Specialization>
+private lateinit var yearOfExperienceList : List<ExperienceYears>
 
-class SeekerRegisterFragment : Fragment()  {
-
+class SeekerRegisterFragment : Fragment() {
 
 
     private val viewModel: SeekerRegisterViewModel by viewModel()
-    private val locationViewModel : LocationViewModel by sharedViewModel()
+    private val locationViewModel: LocationViewModel by sharedViewModel()
     private val seekerRegisterRequest by lazy { SeekerRegisterRequest() }
     private var genderType: Int? = null
     private var englishLevel: Int? = null
@@ -60,8 +66,9 @@ class SeekerRegisterFragment : Fragment()  {
     private var jobType: Int? = null
     private var profileImageFile: File? = null
     private var resume: File? = null
-    private var latitiude : Double = 0.0
-    private var longitude : Double  =0.0
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,25 +79,31 @@ class SeekerRegisterFragment : Fragment()  {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
 
-        toolBarIcon2.setImageDrawable(ContextCompat.getDrawable(context!!,R.drawable.ic_arrow_point_to_right))
+        toolBarIcon2.setImageDrawable(
+            ContextCompat.getDrawable(
+                context!!,
+                R.drawable.ic_arrow_point_to_right
+            )
+        )
         toolBarIcon2.setOnClickListener { activity?.onBackPressed() }
         appBarTitle.text = getString(R.string.seeker_info)
-        
+
 
         mapImgV.setOnClickListener { openMapFragment() }
 
         hjrigDateTV.setOnClickListener { openCalender(hjrigDateTV) }
-        gregorianDateTV.setOnClickListener {openCalender(gregorianDateTV)}
-        genderRG.setOnCheckedChangeListener { radioGroup, i -> (
-                if (i%2 == 0) genderType = 2
-                        else genderType = 1
-                ) }
+        gregorianDateTV.setOnClickListener { openCalender(gregorianDateTV) }
+        genderRG.setOnCheckedChangeListener { radioGroup, i ->
+            (
+                    if (i % 2 == 0) genderType = 2
+                    else genderType = 1
+                    )
+        }
 
         englishRG.setOnCheckedChangeListener { radioGroup, i ->
             english = 1
@@ -148,10 +161,10 @@ class SeekerRegisterFragment : Fragment()  {
         profilePicImage.setOnClickListener { openGallery() }
 
 
-        locationViewModel.latLng.observe(this , Observer {
-            latitiude = it.latitude
+        locationViewModel.latLng.observe(this, Observer {
+            latitude = it.latitude
             longitude = it.longitude
-            Toast.makeText(context,"${it.latitude}",Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "${it.latitude}", Toast.LENGTH_LONG).show()
         })
         viewModel.error.observe(this, Observer {
 
@@ -160,10 +173,11 @@ class SeekerRegisterFragment : Fragment()  {
             }
         })
 
-        viewModel.getQualifications().observe(this , Observer {
+        viewModel.getQualifications().observe(this, Observer {
 
             it?.let {
 
+                qualificationList = it
                 val adapter = ArrayAdapter<String>(
                     context!!,
                     R.layout.drop_down_item,
@@ -171,15 +185,35 @@ class SeekerRegisterFragment : Fragment()  {
                 )
 
                 qualificationTV.setAdapter(adapter)
+                qualificationTV.onItemClickListener = ItemClickListener(qualificationTV)
             }
         })
 
 
+            qualificationsID.observe(this, Observer {
 
-        viewModel.getNationalities().observe(this , Observer {
+                spicalizationTV.text = null
+                viewModel.getSpecialization(it).observe(this , Observer {
+                it?.let{
+                    specializationList = it
+                    val adapter = ArrayAdapter<String>(
+                        context!!,
+                        R.layout.drop_down_item,
+                        it.map { it.specialization }
+                    )
+
+                    spicalizationTV.setAdapter(adapter)
+                    spicalizationTV.onItemClickListener = ItemClickListener(spicalizationTV)
+                }
+
+            })
+            })
+
+        viewModel.getNationalities().observe(this, Observer {
 
             it?.let {
 
+                nationalList = it
                 val adapter = ArrayAdapter<String>(
                     context!!,
                     R.layout.drop_down_item,
@@ -187,11 +221,24 @@ class SeekerRegisterFragment : Fragment()  {
                 )
 
                 nationalityTV.setAdapter(adapter)
+                nationalityTV.onItemClickListener = ItemClickListener(nationalityTV)
             }
         })
-        val yearsOfExperience = arrayListOf("1","2","3","4","5","6")
-        val adapter = ArrayAdapter<String>(context!!,R.layout.drop_down_item,yearsOfExperience)
-        yearsOfExperienceTV.setAdapter(adapter)
+
+        viewModel.getExperienceYears().observe(this, Observer {
+
+            it?.let {
+                yearOfExperienceList = it
+                val adapter = ArrayAdapter<String>(
+                    context!!,
+                    R.layout.drop_down_item,
+                    it.map { it.years })
+                yearsOfExperienceTV.setAdapter(adapter)
+                yearsOfExperienceTV.onItemClickListener = ItemClickListener(yearsOfExperienceTV)
+            }
+        })
+
+
         saveButton.setOnClickListener {
 
             if (validateInputs()) {
@@ -209,7 +256,8 @@ class SeekerRegisterFragment : Fragment()  {
     }
 
 
-    private fun openCalender(tv : TextView) {
+
+    private fun openCalender(tv: TextView) {
 
 
         val c = Calendar.getInstance()
@@ -218,21 +266,33 @@ class SeekerRegisterFragment : Fragment()  {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
 
-        val dpd = DatePickerDialog(context!!, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val dpd = DatePickerDialog(
+            context!!,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
-           tv.text  =  "$year/$monthOfYear/$dayOfMonth"
+                tv.text = "$year/$monthOfYear/$dayOfMonth"
 
-        }, year, month, day)
+            },
+            year,
+            month,
+            day
+        )
 
         dpd.show()
 
     }
-    private fun openMapFragment(){
 
-        if (ActivityCompat.checkSelfPermission(context!!,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity!!,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+    private fun openMapFragment() {
+
+        if (ActivityCompat.checkSelfPermission(
+                context!!,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                activity!!,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
+            )
             return
         }
         val transaction = activity?.supportFragmentManager?.beginTransaction()
@@ -240,8 +300,8 @@ class SeekerRegisterFragment : Fragment()  {
         var mapFragment = activity?.supportFragmentManager?.findFragmentByTag("map_fragment")
         if (mapFragment != null) transaction?.remove(mapFragment)
         transaction?.addToBackStack(null)
-        var dialogMapFragment =  MapDialogFragment()
-        dialogMapFragment.show(transaction!! , "map_fragment")
+        var dialogMapFragment = MapDialogFragment()
+        dialogMapFragment.show(transaction!!, "map_fragment")
     }
 
     @AfterPermissionGranted(RC_OPEN_DECUMENTATION)
@@ -295,8 +355,8 @@ class SeekerRegisterFragment : Fragment()  {
         if (resultCode == Activity.RESULT_OK) {
 
 
-            Log.e("CODE" , "$requestCode")
-            when(requestCode){
+            Log.e("CODE", "$requestCode")
+            when (requestCode) {
                 DOCUMENT_CODE -> {
                     data?.data?.let {
                         try {
@@ -310,7 +370,7 @@ class SeekerRegisterFragment : Fragment()  {
                         }
                     }
                 }
-                else  -> {
+                else -> {
                     data?.data?.let {
                         try {
 
@@ -330,7 +390,7 @@ class SeekerRegisterFragment : Fragment()  {
 
     }
 
-//    override fun onRequestPermissionsResult(
+    //    override fun onRequestPermissionsResult(
 //        requestCode: Int,
 //        permissions: Array<out String>,
 //        grantResults: IntArray
@@ -341,9 +401,9 @@ class SeekerRegisterFragment : Fragment()  {
     private fun validateInputs(): Boolean {
 
         if (firstNameTI.text.isNullOrEmpty() || middelNameTI.text.isNullOrEmpty() || lastNameTI.text.isNullOrEmpty() || genderType == null
-            || qualificationTV.text.isNullOrEmpty() || spicalizationTI.text.isNullOrEmpty() || yearsOfExperienceTV.text.isNullOrEmpty() ||
+            || qualificationsID == null || specializationID == null || yearOfExperienceID == null || nationalID == null ||
             descTI.text.isNullOrEmpty() || profileImageFile == null || resume == null || phoneNumberTi.text.isNullOrEmpty() || emailTI.text.isNullOrEmpty()
-            || english == null || genderType == null || englishLevel == null || spicalizationTI.text.isNullOrEmpty()
+            || english == null || englishLevel == null ||  spicalizationTV.text.isNullOrEmpty()
         ) {
             Toast.makeText(context, "يرجى ادخال جميع البيانات", Toast.LENGTH_SHORT).show()
             return false
@@ -363,17 +423,37 @@ class SeekerRegisterFragment : Fragment()  {
         seekerRegisterRequest.jobType = jobType
         seekerRegisterRequest.birthdayGregorian = gregorianDateTV.text.toString()
         seekerRegisterRequest.birthdayHegire = hjrigDateTV.text.toString()
-        seekerRegisterRequest.latitude = latitiude
+        seekerRegisterRequest.latitude = latitude
         seekerRegisterRequest.longitude = longitude
-        seekerRegisterRequest.national = 1
+        seekerRegisterRequest.national = nationalID
         seekerRegisterRequest.phoneNumber = phoneNumberTi.text.toString()
-        seekerRegisterRequest.qualification = qualificationTV.text.toString()
-        seekerRegisterRequest.specialization = spicalizationTI.text.toString()
-        seekerRegisterRequest.yearsExperience = yearsOfExperienceTV.text.toString().toInt()
+        seekerRegisterRequest.qualification = qualificationsID.value
+        seekerRegisterRequest.specialization = specializationID
+        seekerRegisterRequest.yearsExperience = yearOfExperienceID
 
         return true
     }
 
+
+    class ItemClickListener(private val ac: AutoCompleteTextView) :
+        AdapterView.OnItemClickListener {
+
+
+        override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+
+            when (ac.id) {
+
+                R.id.qualificationTV ->  qualificationsID.value = qualificationList[p2].id
+                R.id.spicalizationTV -> specializationID = qualificationList[p2].id
+                R.id.yearsOfExperienceTV -> yearOfExperienceID = yearOfExperienceList[p2].id
+                R.id.nationalityTV -> nationalID = nationalList[p2].id
+
+            }
+        }
+
+
+    }
 
 }
 

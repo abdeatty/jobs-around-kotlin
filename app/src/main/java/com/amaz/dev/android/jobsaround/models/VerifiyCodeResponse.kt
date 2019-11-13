@@ -14,35 +14,35 @@ data class VerifiyCodeResponse(
     var user: User?
 ) {
     data class User(
-        @Json(name = "activity")
+        @field:Json(name = "activity")
         var activity: String?,
-        @Json(name = "buildName")
+        @field:Json(name = "buildName")
         var buildName: String?,
-        @Json(name = "created_at")
+        @field:Json(name = "created_at")
         var createdAt: String?,
-        @Json(name = "deleted_at")
+        @field:Json(name = "deleted_at")
         var deletedAt: Any?,
-        @Json(name = "email")
+        @field:Json(name = "email")
         var email: String?,
-        @Json(name = "icon")
+        @field:Json(name = "icon")
         var icon: String?,
-        @Json(name = "id")
+        @field:Json(name = "id")
         var id: String?,
-        @Json(name = "latitude")
-        var latitude: Double?,
-        @Json(name = "longitude")
-        var longitude: Double?,
-        @Json(name = "phone")
+        @field:Json(name = "latitude")
+        var latitude: String?,
+        @field:Json(name = "longitude")
+        var longitude: String?,
+        @field:Json(name = "phone")
         var phone: String?,
-        @Json(name = "phoneNumber")
+        @field:Json(name = "phoneNumber")
         var phoneNumber: String?,
-        @Json(name = "registerImage")
+        @field:Json(name = "registerImage")
         var registerImage: String?,
-        @Json(name = "registrationNumber")
+        @field:Json(name = "registrationNumber")
         var registrationNumber: Long?,
-        @Json(name = "updated_at")
+        @field:Json(name = "updated_at")
         var updatedAt: String?,
-        @Json(name = "username")
+        @field:Json(name = "username")
         var username: String?
     )
 }

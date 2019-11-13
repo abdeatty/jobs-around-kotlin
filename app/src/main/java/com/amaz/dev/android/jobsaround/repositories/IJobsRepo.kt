@@ -1,6 +1,7 @@
 package com.amaz.dev.android.jobsaround.repositories
 
 import com.amaz.dev.android.jobsaround.models.*
+import com.google.android.gms.maps.model.LatLng
 
 interface IJobsRepo {
 
@@ -11,5 +12,9 @@ interface IJobsRepo {
     suspend fun getQualifications() : DataResult<List<Qualification>>
     suspend fun getNationalities() : DataResult<List<Nationality>>
     suspend fun createJobForOwner(createJobRequest: CreateJobRequest) : DataResult<Boolean>
-    suspend fun getOwnerJobs() : DataResult<List<OwnerJobResponse>>
+    suspend fun getOwnerJobs() : DataResult<List<Job>>
+    suspend fun getOwnerProfile() : DataResult<OwnerProfileResponse>
+    suspend fun getNearestJobsForSeeker(latLng: LatLng) : DataResult<List<JobDetails>>
+    suspend fun getSpecialization(qualificationId : Int) : DataResult<List<Specialization>>
+    suspend fun getExperienceYears() : DataResult<List<ExperienceYears>>
 }

@@ -64,14 +64,21 @@ interface ApiService {
     @GET("qualifications")
     suspend fun getQualifications() : ApiResponse<List<Qualification>>
 
+    @FormUrlEncoded
+    @POST("qualification/specialization")
+    suspend fun getSpecialization(@Field("qualification_id") qualificationId : Int) : ApiResponse<List<Specialization>>
+
     @GET("nationals")
     suspend fun getNationalities() : ApiResponse<List<Nationality>>
+
+    @GET("experience/years")
+    suspend fun getExperienceYears() : ApiResponse<List<ExperienceYears>>
 
 
 
     @GET("owner/job/list")
     @Headers("$REQUIRE_AUTHENTICATION: true")
-    suspend fun getOwnerJobs() : ApiResponse<List<OwnerJobResponse>>
+    suspend fun getOwnerJobs() : ApiResponse<List<Job>>
 
 
     @FormUrlEncoded
@@ -94,6 +101,15 @@ interface ApiService {
     ) : ApiResponse<CreateJobResponse>
 
 
+    @GET("owner/getUser")
+    @Headers("$REQUIRE_AUTHENTICATION: true")
+    suspend fun getOwnerProfile() : ApiResponse<OwnerProfileResponse>
+
+    @FormUrlEncoded
+    @POST("seekers/nearest/work")
+    @Headers("$REQUIRE_AUTHENTICATION: true")
+    suspend fun getNearestJobsForSeeker(@Field("latitude") latitude : Double,
+                                  @Field("longitude") longitude: Double) : ApiResponse<List<JobDetails>>
 
 }
 

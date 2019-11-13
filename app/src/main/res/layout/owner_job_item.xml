@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     app:cardElevation="@dimen/_4sdp"
-    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_6sdp"
     android:layout_margin="@dimen/_6sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
 
         <TextView
             android:id="@+id/jobNumberTV"
@@ -44,15 +45,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="19/3/2019"
+            android:layout_marginEnd="@dimen/_6sdp"
+            app:layout_constraintEnd_toStartOf="@id/guideLine"
             android:drawableEnd="@drawable/ic_calendar"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_16sdp"
             android:drawableTint="@color/colorPrimaryDark"
             android:drawablePadding="@dimen/_8sdp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/jobTitleTV"
-            app:layout_constraintStart_toStartOf="parent"/>
+            />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine"
+            android:layout_width="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".47"
+            android:layout_height="match_parent"/>
         <TextView
             android:id="@+id/genderTV"
             android:layout_width="wrap_content"
@@ -60,6 +68,7 @@
             tools:text="Male"
             android:layout_marginEnd="@dimen/_8sdp"
             android:drawablePadding="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:drawableTint="@color/colorPrimaryDark"
             android:drawableEnd="@drawable/ic_gender_male"
             android:textSize="@dimen/_16sdp"
@@ -71,13 +80,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="الرياض"
+            android:layout_marginTop="@dimen/_6sdp"
+            app:layout_constraintEnd_toStartOf="@id/guideLine"
             android:drawableTint="@color/colorPrimaryDark"
             android:drawableEnd="@drawable/ic_pin"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_16sdp"
-            app:layout_constraintHorizontal_bias=".65"
-            app:layout_constraintEnd_toStartOf="@id/jobTitleTV"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/jodDateTV"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -1,16 +1,50 @@
 package com.amaz.dev.android.jobsaround.repositories
 
 import android.content.Context
+import android.util.Log
 import com.amaz.dev.android.jobsaround.helpers.Constants
 import com.amaz.dev.android.jobsaround.models.*
 import com.amaz.dev.android.jobsaround.network.Network
 import com.amaz.dev.android.jobsaround.network.RemoteDataSource
 import com.android.airbag.helpers.SharedPreferencesManager
+import com.google.android.gms.maps.model.LatLng
 
 class JobsRepo(private val  remoteDataSource: RemoteDataSource , private val context: Context) : IJobsRepo {
 
 
-    override suspend fun getOwnerJobs(): DataResult<List<OwnerJobResponse>> {
+
+
+    override suspend fun getNearestJobsForSeeker(latLng: LatLng): DataResult<List<JobDetails>> {
+
+
+        return when(val result = remoteDataSource.getNearestJobsForSeeker(latLng)){
+
+            is DataResult.Success -> {
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
+
+
+    override suspend fun getOwnerProfile(): DataResult<OwnerProfileResponse> {
+
+
+        return when(val result = remoteDataSource.getOwnerProfile()){
+            is DataResult.Success -> {
+                DataResult.Success(result.content)
+            }
+
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
+
+
+    override suspend fun getOwnerJobs(): DataResult<List<Job>> {
 
         return when(val result = remoteDataSource.getOwnerJobs()){
             is DataResult.Success -> {
@@ -65,6 +99,36 @@ class JobsRepo(private val  remoteDataSource: RemoteDataSource , private val con
         }
 
     }
+
+
+
+    override suspend fun getSpecialization(qualificationId: Int): DataResult<List<Specialization>> {
+
+
+        return when(val result = remoteDataSource.getSpecialization(qualificationId)){
+
+            is DataResult.Success ->{
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
+
+    override suspend fun getExperienceYears(): DataResult<List<ExperienceYears>> {
+
+        return when(val result = remoteDataSource.getExperienceYears()){
+
+            is DataResult.Success ->{
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+    }
+
 
     override suspend fun verifiyCode(code: String): DataResult<Boolean> {
         return when(val result = remoteDataSource.verifiyCode(code)){

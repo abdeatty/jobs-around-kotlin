@@ -30,7 +30,7 @@
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        android:layout_height="0dp"/>-->
     <TextView
-        android:id="@+id/foundation_name_tv"
+        android:id="@+id/foundationNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
@@ -54,7 +54,7 @@
         android:text="مركز غرناطه, الرياض"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toStartOf="@id/foundation_iv"
-        app:layout_constraintTop_toBottomOf="@id/foundation_name_tv" />
+        app:layout_constraintTop_toBottomOf="@id/foundationNameTV" />
 
 
     <TextView

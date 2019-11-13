@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.amaz.dev.android.jobsaround.R
+import com.blankj.utilcode.util.KeyboardUtils
 import kotlinx.android.synthetic.main.fragment_phone_verification.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,6 +48,7 @@ class PhoneVerificationFragment : Fragment() {
 
                 it?.let {
                     findNavController().navigate(R.id.action_phoneVerification_to_homeFragment)
+                    KeyboardUtils.hideSoftInput(getView())
                 }
             })
 

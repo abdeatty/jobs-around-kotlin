@@ -75,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/phone_number_input"/>
 
     <TextView
+        android:id="@+id/skipLoginTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="تخطى التسجيل"
@@ -89,6 +90,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=" تسجيل جديد"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@+id/skipLoginTV"
         android:textSize="@dimen/_16sdp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

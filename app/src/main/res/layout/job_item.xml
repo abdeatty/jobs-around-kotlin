@@ -40,7 +40,7 @@
 
 
                 <TextView
-                    android:id="@+id/foundation_name_tv"
+                    android:id="@+id/foundationNameTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="موسسه قنوات الرقميه"
@@ -55,7 +55,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    android:id="@+id/job_title"
+                    android:id="@+id/jobTitleTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="مهندس ميكانيكا"
@@ -66,7 +66,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintEnd_toStartOf="@id/foundation_iv"
-                    app:layout_constraintTop_toBottomOf="@id/foundation_name_tv"/>
+                    app:layout_constraintTop_toBottomOf="@id/foundationNameTV"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,13 +78,13 @@
                     android:drawablePadding="@dimen/_4sdp"
                     android:drawableTint="@color/colorPrimary"
                     android:drawableEnd="@drawable/ic_clock"
-                    app:layout_constraintEnd_toStartOf="@+id/job_title"
+                    app:layout_constraintEnd_toStartOf="@+id/jobTitleTV"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/foundation_name_tv"/>
+                    app:layout_constraintTop_toBottomOf="@id/foundationNameTV"/>
 
                 <TextView
                     android:id="@+id/gender"
-                    app:layout_constraintTop_toBottomOf="@id/job_title"
+                    app:layout_constraintTop_toBottomOf="@id/jobTitleTV"
                     app:layout_constraintEnd_toStartOf="@id/foundation_iv"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -106,7 +106,7 @@
                     android:drawableEnd="@drawable/ic_calendar"
                     app:layout_constraintHorizontal_bias=".2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/job_title"
+                    app:layout_constraintTop_toBottomOf="@id/jobTitleTV"
                     app:layout_constraintEnd_toStartOf="@id/gender"
                     android:text="10-9-2019"/>
 

@@ -43,7 +43,7 @@
                 app:srcCompat="@drawable/ic_upload" />
 
             <TextView
-                android:id="@+id/foundation_name_tv"
+                android:id="@+id/foundationNameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/job_title"
+                android:id="@+id/jobTitleTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -70,7 +70,7 @@
                 android:text="مهندس ميكانيكا"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toStartOf="@id/foundation_iv"
-                app:layout_constraintTop_toBottomOf="@id/foundation_name_tv" />
+                app:layout_constraintTop_toBottomOf="@id/foundationNameTV" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,10 +81,10 @@
                 android:drawableTint="@color/colorPrimary"
                 android:text="10 كم"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toStartOf="@+id/job_title"
+                app:layout_constraintEnd_toStartOf="@+id/jobTitleTV"
                 app:layout_constraintHorizontal_bias=".59"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/foundation_name_tv" />
+                app:layout_constraintTop_toBottomOf="@id/foundationNameTV" />
 
             <TextView
                 android:id="@+id/gender"
@@ -98,7 +98,7 @@
                 android:text="ذكر"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toStartOf="@id/foundation_iv"
-                app:layout_constraintTop_toBottomOf="@id/job_title" />
+                app:layout_constraintTop_toBottomOf="@id/jobTitleTV" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
                 app:layout_constraintEnd_toStartOf="@id/gender"
                 app:layout_constraintHorizontal_bias=".26"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/job_title" />
+                app:layout_constraintTop_toBottomOf="@id/jobTitleTV" />
 
             <TextView
                 android:id="@+id/job_location_tv"

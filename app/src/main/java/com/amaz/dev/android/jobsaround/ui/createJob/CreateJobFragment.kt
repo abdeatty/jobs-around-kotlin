@@ -10,15 +10,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
 import com.amaz.dev.android.jobsaround.R
-import com.amaz.dev.android.jobsaround.models.CreateJobRequest
+import com.amaz.dev.android.jobsaround.models.*
+import com.amaz.dev.android.jobsaround.ui.auth.register.seeker.*
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import kotlinx.android.synthetic.main.fragment_create_job.*
@@ -36,8 +36,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * A simple [Fragment] subclass.
  */
 
+private var qualificationsID : Int ? = null
+private var yearOfExperienceID: Int? = null
+private lateinit var qualificationList : List<Qualification>
+private lateinit var yearOfExperienceList : List<ExperienceYears>
 private const val LOCATION_PERMISSION_REQUEST_CODE = 65
-class CreateJobFragment : Fragment() {
+class CreateJobFragment : Fragment()  {
+
+
+
 
     private val viewModel: CreateJobViewModel by viewModel()
     private val locationViewModel: LocationViewModel by viewModel()
@@ -48,6 +55,7 @@ class CreateJobFragment : Fragment() {
     private var englishLevel: Int? = null
     private var jobType: Int? = null
     private var gender: Int? = null
+
 
 
     override fun onCreateView(
@@ -72,6 +80,10 @@ class CreateJobFragment : Fragment() {
 
 
         mapImgView.setOnClickListener { openMapFragment() }
+
+
+
+
 
         locationViewModel.latLng.observe(this, Observer {
             it?.let {
@@ -129,14 +141,31 @@ class CreateJobFragment : Fragment() {
                 ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
             jobType = 1
         }
+
+        viewModel.getExperienceYears().observe(this , Observer {
+
+            it?.let{
+                yearOfExperienceList = it
+                val adapter = ArrayAdapter<String>(
+                    context!!,
+                    R.layout.drop_down_item,
+                    it.map { it.years })
+                yearsOfExperienceTV.setAdapter(adapter)
+                yearsOfExperienceTV.onItemClickListener = ItemClickListener(yearsOfExperienceTV)
+            }
+        })
+
+
         viewModel.getQualifications().observe(this, Observer {
             it?.let {
+                qualificationList = it
                 val adapter = ArrayAdapter<String>(
                     context!!,
                     R.layout.drop_down_item,
                     it.map { it.qualification }
                 )
                 qualificationTV.setAdapter(adapter)
+                qualificationTV.onItemClickListener = ItemClickListener(qualificationTV)
             }
         })
         viewModel.error.observe(this, Observer {
@@ -159,8 +188,9 @@ class CreateJobFragment : Fragment() {
 
     private fun validateInputs(): Boolean {
 
-        if (jobTitleEt.text.isNullOrEmpty() || jobDescEt.text.isNullOrEmpty() || gender == null
-            || yearsOfExperienceET.text.isNullOrEmpty() || english == null || englishLevel == null || jobType == null
+
+        if (jobTitleEt.text.isNullOrEmpty() || jobDescEt.text.isNullOrEmpty() || gender == null ||  yearOfExperienceID == null
+            || yearsOfExperienceTV.text.isNullOrEmpty() || english == null || englishLevel == null || jobType == null || qualificationsID == null
         ) {
 
             Toast.makeText(context, "يرجى ادخال جميع البيانات", Toast.LENGTH_LONG).show()
@@ -168,20 +198,19 @@ class CreateJobFragment : Fragment() {
         }
 
 
-
         createJobRequest.jobTitle = jobTitleEt.text.toString()
-        createJobRequest.buildLogo = 1
-        createJobRequest.buildName = 1
+        createJobRequest.buildLogo = if(hideOrganizationLogoSw.isChecked)  1 else 0
+        createJobRequest.buildName = if(hideOrganizationNameSw.isChecked)  1 else 0
         createJobRequest.description = jobDescEt.text.toString()
         createJobRequest.english = english
         createJobRequest.englishDegree = englishLevel
-        createJobRequest.experience = yearsOfExperienceET.text.toString().toInt()
+        createJobRequest.experience = yearOfExperienceID
         createJobRequest.gender = gender
         createJobRequest.latitude = latitude
         createJobRequest.longitude = longitude
         createJobRequest.national = 1
         createJobRequest.jobType = jobType
-        createJobRequest.qualification = 1
+        createJobRequest.qualification = qualificationsID
         return true
     }
 
@@ -201,5 +230,25 @@ class CreateJobFragment : Fragment() {
         transaction?.addToBackStack(null)
         var dialogMapFragment =  MapDialogFragment()
         dialogMapFragment.show(transaction!! , "map_fragment")
+    }
+
+
+
+    class ItemClickListener(private val ac: AutoCompleteTextView) :
+        AdapterView.OnItemClickListener {
+
+
+        override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+
+            when (ac.id) {
+
+                R.id.qualificationTV ->  qualificationsID = qualificationList[p2].id
+                R.id.yearsOfExperienceTV -> yearOfExperienceID = yearOfExperienceList[p2].id
+
+            }
+        }
+
+
     }
 }

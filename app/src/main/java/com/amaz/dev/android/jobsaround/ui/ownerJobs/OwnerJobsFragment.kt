@@ -45,7 +45,6 @@ class OwnerJobsFragment : Fragment() {
             it?.let {
                 adapter.submitList(it)
             }
-            Toast.makeText(context,it.size,Toast.LENGTH_LONG).show()
         })
     }
 

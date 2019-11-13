@@ -2,6 +2,7 @@ package com.amaz.dev.android.jobsaround.network
 
 import android.util.Log
 import com.amaz.dev.android.jobsaround.models.*
+import com.google.android.gms.maps.model.LatLng
 
 
 class RemoteDataSource(private val api: ApiService) {
@@ -36,8 +37,8 @@ class RemoteDataSource(private val api: ApiService) {
             createTextBody(srr.englishDegree.toString()),
             createTextBody(srr.jobType.toString()),
             createTextBody(srr.yearsExperience.toString()),
-            createTextBody(srr.specialization!!),
-            createTextBody(srr.qualification!!),
+            createTextBody(srr.specialization.toString()),
+            createTextBody(srr.qualification.toString()),
             createTextBody(srr.description!!),
             createTextBody(srr.latitude.toString()),
             createTextBody(srr.longitude.toString()),
@@ -60,6 +61,10 @@ class RemoteDataSource(private val api: ApiService) {
 
     suspend fun getNationalities() = safeApiCall { api.getNationalities() }
 
+    suspend fun getSpecialization(qualificationId : Int) = safeApiCall { api.getSpecialization(qualificationId) }
+
+    suspend fun getExperienceYears()  = safeApiCall { api.getExperienceYears() }
+
     suspend fun createJobForOwner(cjr: CreateJobRequest) = safeApiCall {
 
 
@@ -69,5 +74,9 @@ class RemoteDataSource(private val api: ApiService) {
     }
 
     suspend fun getOwnerJobs() = safeApiCall { api.getOwnerJobs() }
+
+    suspend fun getOwnerProfile() = safeApiCall { api.getOwnerProfile() }
+
+    suspend fun getNearestJobsForSeeker(latLng: LatLng) = safeApiCall { api.getNearestJobsForSeeker(latLng.latitude,latLng.longitude) }
 
 }

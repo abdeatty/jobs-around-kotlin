@@ -3,10 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nave"
-    app:startDestination="@id/chatUserListFragment">
+    app:startDestination="@id/menuJobsFragment">
 
 
 
+    <fragment android:id="@+id/menuJobsFragment"
+        tools:layout="@layout/fragment_menu_jobs"
+        android:label="Menu Jobs"
+        android:name="com.amaz.dev.android.jobsaround.ui.menuJobs.MenuJobsFragment"/>
     <fragment android:id="@+id/chatUserListFragment"
         android:name="com.amaz.dev.android.jobsaround.ui.chat_list.ChatListFragment"
         tools:layout="@layout/fragment_chat_list"

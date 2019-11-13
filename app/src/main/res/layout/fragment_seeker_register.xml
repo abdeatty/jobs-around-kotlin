@@ -320,19 +320,21 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:gravity="center"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:boxStrokeColor="@color/blue_dark"
                 app:boxStrokeWidth="@dimen/_4sdp"
+                android:layoutDirection="rtl"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_height="@dimen/_45sdp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/spicalizationTI"
+                <AutoCompleteTextView
+                    android:id="@+id/spicalizationTV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:editable="false"
                     android:drawablePadding="@dimen/_8sdp"
 
-                    android:drawableStart="@drawable/ic_drop_down_arrow"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -635,6 +637,7 @@
                     android:id="@+id/phoneNumberTi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:inputType="phone"
                     android:backgroundTint="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -660,6 +663,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailTI"
+                    android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"/>

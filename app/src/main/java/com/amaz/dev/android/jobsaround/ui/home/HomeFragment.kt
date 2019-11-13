@@ -44,7 +44,8 @@ class HomeFragment : Fragment() {
 
 
         navController.addOnDestinationChangedListener { _, navDestination: NavDestination, _ ->
-            if (navDestination.id == R.id.menuFragment || navDestination.id == R.id.profileFragment || navDestination.id == R.id.chatUserListFragment) {
+            if (navDestination.id == R.id.menuFragment || navDestination.id == R.id.profileFragment
+                || navDestination.id == R.id.chatUserListFragment || navDestination.id == R.id.menuJobsFragment) {
                 bottomNavView.visibility = View.VISIBLE
             } else {
                 bottomNavView.visibility = View.GONE

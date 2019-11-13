@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amaz.dev.android.jobsaround.models.DataResult
-import com.amaz.dev.android.jobsaround.models.OwnerJobResponse
+import com.amaz.dev.android.jobsaround.models.Job
 import com.amaz.dev.android.jobsaround.repositories.IJobsRepo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -15,9 +15,9 @@ class OwnerJobsViewModel(private val iJobsRepo: IJobsRepo) : ViewModel() {
 
     var error = MutableLiveData<String>()
 
-    fun getOwnerJobs() : LiveData<List<OwnerJobResponse>>{
+    fun getOwnerJobs() : LiveData<List<Job>>{
 
-        var data = MutableLiveData<List<OwnerJobResponse>>()
+        var data = MutableLiveData<List<Job>>()
 
         viewModelScope.launch {
             when(val result = withContext(IO) {iJobsRepo.getOwnerJobs()}){

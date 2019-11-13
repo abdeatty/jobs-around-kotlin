@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amaz.dev.android.jobsaround.models.CreateJobRequest
 import com.amaz.dev.android.jobsaround.models.DataResult
+import com.amaz.dev.android.jobsaround.models.ExperienceYears
 import com.amaz.dev.android.jobsaround.models.Qualification
 import com.amaz.dev.android.jobsaround.repositories.IJobsRepo
 import kotlinx.coroutines.Dispatchers.IO
@@ -34,6 +35,29 @@ class CreateJobViewModel(private val iJobsRepo: IJobsRepo) : ViewModel() {
         }
         return data
     }
+
+
+    fun getExperienceYears() : LiveData<List<ExperienceYears>>{
+
+        var data = MutableLiveData<List<ExperienceYears>>()
+
+        viewModelScope.launch {
+            when(val result = withContext(IO) {iJobsRepo.getExperienceYears()}){
+
+                is DataResult.Success -> {
+                    data.value = result.content
+                    error.value = null
+                }
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
+
+
     fun createJobForOwner(createJobRequest: CreateJobRequest) : LiveData<Boolean>{
         var data = MutableLiveData<Boolean>()
         viewModelScope.launch {

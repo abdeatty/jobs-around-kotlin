@@ -21,6 +21,10 @@ import com.amaz.dev.android.jobsaround.models.OwnerRegisterRequest
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import com.blankj.utilcode.util.UriUtils
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_owner_register.*
 import kotlinx.android.synthetic.main.fragment_owner_register.saveButton
 import kotlinx.android.synthetic.main.tool_bar.*
@@ -35,12 +39,22 @@ private const val GALLERY_CODE = 100
 private const val DOCUMENT_CODE = 101
 private const val _READ_PERMISSION_CODE = 170
 private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+private lateinit var mGoogleMap : GoogleMap
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class OwnerRegisterFragment : Fragment() {
+class OwnerRegisterFragment : Fragment(), OnMapReadyCallback ,GoogleMap.OnMapClickListener {
+    override fun onMapClick(p0: LatLng?) {
+        openMapFragment()
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+
+        mGoogleMap = googleMap!!
+        googleMap?.setOnMapClickListener(this)
+    }
 
     private val viewModel : OwnerRegisterViewModel by viewModel()
     private val locationViewModel : LocationViewModel by sharedViewModel()
@@ -69,7 +83,10 @@ class OwnerRegisterFragment : Fragment() {
 
 
         organizationImageTI.setOnClickListener { openGallery() }
-        mapImgV.setOnClickListener { openMapFragment() }
+
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
+
         businessCommercialImageTIET.setOnClickListener { openFiles() }
         viewModel.error.observe(this , Observer {
             it?.let {
@@ -80,6 +97,7 @@ class OwnerRegisterFragment : Fragment() {
         locationViewModel.latLng.observe(this , Observer {
             latitiude = it.latitude
             longitude = it.longitude
+            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitiude , longitude), 16F))
 
         })
 
@@ -171,9 +189,6 @@ class OwnerRegisterFragment : Fragment() {
 
 
                              organizationImage = UriUtils.uri2File(it)
-                             organizationImage?.name?.let { fileName ->
-                                 organizationImageTI.setText(fileName)
-                             }
                          } catch (e: Exception) {
                              e.printStackTrace()
                          }
@@ -185,9 +200,6 @@ class OwnerRegisterFragment : Fragment() {
                     data?.data?.let {
                         try {
                             businessCommercialFile = UriUtils.uri2File(it)
-                            businessCommercialFile?.name?.let { fileName ->
-                                businessCommercialImageTIET.setText(fileName)
-                            }
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
@@ -249,5 +261,35 @@ class OwnerRegisterFragment : Fragment() {
         ownerRegisterRequest.registrationNumber = businessCommercialNumberTIET.text.toString()
         ownerRegisterRequest.username = authorizedPersonNameTIET.text.toString()
         return  true
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mapView?.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView?.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView?.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView?.onStop()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView?.onDestroy()
     }
 }

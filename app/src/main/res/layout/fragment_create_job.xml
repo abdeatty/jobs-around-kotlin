@@ -86,10 +86,11 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"/>
 
-            <ImageView
-                android:id="@+id/mapImgView"
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:clickable="true"
                 android:src="@drawable/ic_map"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginStart="@dimen/_20sdp"

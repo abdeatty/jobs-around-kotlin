@@ -26,8 +26,14 @@ import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
 import com.blankj.utilcode.util.UriUtils
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import kotlinx.android.synthetic.main.fragment_owner_register.*
 import kotlinx.android.synthetic.main.fragment_owner_register.saveButton
 import kotlinx.android.synthetic.main.fragment_seeker_register.*
+import kotlinx.android.synthetic.main.fragment_seeker_register.mapView
 import kotlinx.android.synthetic.main.tool_bar.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,9 +59,20 @@ private lateinit var qualificationList : List<Qualification>
 private lateinit var nationalList : List<Nationality>
 private lateinit var specializationList : List<Specialization>
 private lateinit var yearOfExperienceList : List<ExperienceYears>
+private lateinit var mGoogleMap: GoogleMap
 
-class SeekerRegisterFragment : Fragment() {
+class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapClickListener {
+    override fun onMapClick(p0: LatLng?) {
+        openMapFragment()
+    }
 
+    override fun onMapReady(googleMap: GoogleMap?) {
+
+        mGoogleMap = googleMap!!
+        googleMap?.setOnMapClickListener(this)
+//        var latLng : LatLng = LatLng(googleMap?.myLocation!!.latitude,googleMap.myLocation.longitude)
+//        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16F))
+    }
 
     private val viewModel: SeekerRegisterViewModel by viewModel()
     private val locationViewModel: LocationViewModel by sharedViewModel()
@@ -83,6 +100,8 @@ class SeekerRegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
 
         toolBarIcon2.setImageDrawable(
             ContextCompat.getDrawable(
@@ -94,7 +113,7 @@ class SeekerRegisterFragment : Fragment() {
         appBarTitle.text = getString(R.string.seeker_info)
 
 
-        mapImgV.setOnClickListener { openMapFragment() }
+        mapView.setOnClickListener { openMapFragment() }
 
         hjrigDateTV.setOnClickListener { openCalender(hjrigDateTV) }
         gregorianDateTV.setOnClickListener { openCalender(gregorianDateTV) }
@@ -164,7 +183,7 @@ class SeekerRegisterFragment : Fragment() {
         locationViewModel.latLng.observe(this, Observer {
             latitude = it.latitude
             longitude = it.longitude
-            Toast.makeText(context, "${it.latitude}", Toast.LENGTH_LONG).show()
+        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude , longitude), 16F))
         })
         viewModel.error.observe(this, Observer {
 
@@ -362,8 +381,6 @@ class SeekerRegisterFragment : Fragment() {
                         try {
 
                             resume = UriUtils.uri2File(it)
-                            cvTI.setText(resume?.absolutePath.toString())
-
 
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -455,6 +472,35 @@ class SeekerRegisterFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        mapView?.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView?.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView?.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView?.onStop()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView?.onDestroy()
+    }
 }
 
 

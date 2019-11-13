@@ -9,4 +9,13 @@
         <item name="android:fontFamily">@font/sans_plain</item>
     </style>
 
+
+
+    <style name="CustomAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>

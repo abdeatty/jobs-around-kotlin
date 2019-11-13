@@ -575,12 +575,13 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"/>
 
-            <ImageView
+            <com.google.android.gms.maps.MapView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:clickable="true"
                 android:src="@drawable/ic_map"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:id="@+id/mapImgV"
+                android:id="@+id/mapView"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:scaleType="fitXY"/>

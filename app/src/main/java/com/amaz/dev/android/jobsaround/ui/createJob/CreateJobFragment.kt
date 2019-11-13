@@ -4,8 +4,6 @@ package com.amaz.dev.android.jobsaround.ui.createJob
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.SyncStateContract
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,21 +11,25 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.models.*
-import com.amaz.dev.android.jobsaround.ui.auth.register.seeker.*
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.map.MapDialogFragment
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_create_job.*
 import kotlinx.android.synthetic.main.fragment_create_job.englishLevelBeginnerTV
 import kotlinx.android.synthetic.main.fragment_create_job.englishLevelGoodTV
 import kotlinx.android.synthetic.main.fragment_create_job.englishLevelIntermediateTV
 import kotlinx.android.synthetic.main.fragment_create_job.englishRG
 import kotlinx.android.synthetic.main.fragment_create_job.genderRG
+import kotlinx.android.synthetic.main.fragment_create_job.mapView
 import kotlinx.android.synthetic.main.fragment_create_job.qualificationTV
+import kotlinx.android.synthetic.main.fragment_owner_register.*
 import kotlinx.android.synthetic.main.fragment_profile.createJobButton
 import kotlinx.android.synthetic.main.tool_bar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,8 +43,18 @@ private var yearOfExperienceID: Int? = null
 private lateinit var qualificationList : List<Qualification>
 private lateinit var yearOfExperienceList : List<ExperienceYears>
 private const val LOCATION_PERMISSION_REQUEST_CODE = 65
-class CreateJobFragment : Fragment()  {
+private lateinit var mGoogleMap : GoogleMap
 
+class CreateJobFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapClickListener {
+    override fun onMapClick(p0: LatLng?) {
+        openMapFragment()
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+
+        mGoogleMap = googleMap!!
+        googleMap?.setOnMapClickListener(this)
+    }
 
 
 
@@ -69,6 +81,7 @@ class CreateJobFragment : Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         toolBarIcon2.setImageDrawable(
             ContextCompat.getDrawable(
                 context!!,
@@ -79,16 +92,17 @@ class CreateJobFragment : Fragment()  {
         appBarTitle.text = getString(R.string.add_job)
 
 
-        mapImgView.setOnClickListener { openMapFragment() }
 
 
-
-
-
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
         locationViewModel.latLng.observe(this, Observer {
+            Toast.makeText(context,"${it.latitude}",Toast.LENGTH_LONG).show()
             it?.let {
                 latitude = it.latitude
                 longitude = it.longitude
+                mGoogleMap.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(LatLng(latitude , longitude), 16F))
             }
         })
 
@@ -97,7 +111,7 @@ class CreateJobFragment : Fragment()  {
             var selectedButtonId = radioGroup.checkedRadioButtonId
             var radioButton = radioGroup.findViewById<RadioButton>(selectedButtonId)
             var radioButtonIndex = radioGroup.indexOfChild(radioButton)
-            gender = radioButtonIndex
+            gender = radioButtonIndex + 1
         }
         englishRG.setOnCheckedChangeListener { radioGroup, i -> english = i }
 
@@ -250,5 +264,37 @@ class CreateJobFragment : Fragment()  {
         }
 
 
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        mapView?.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView?.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView?.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView?.onStop()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView?.onDestroy()
     }
 }

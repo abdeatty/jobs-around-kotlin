@@ -9,10 +9,11 @@
     tools:context=".ui.MainActivity">
 
     <ImageView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_70sdp"
         android:layout_gravity="center"
         android:elevation="@dimen/_2sdp"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/ic_pin" />
 
     <com.google.android.gms.maps.MapView

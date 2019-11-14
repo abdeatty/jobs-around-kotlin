@@ -252,6 +252,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_upload"
+                    android:inputType="numberDecimal"
                     android:padding="@dimen/_4sdp"
                     android:editable="false"
                     android:drawablePadding="@dimen/_8sdp"

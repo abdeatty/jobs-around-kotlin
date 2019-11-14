@@ -26,16 +26,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <ImageView
-                    android:id="@+id/foundation_iv"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/foundationImgV"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
-
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-
                     android:padding="@dimen/_10sdp"
-                    app:srcCompat="@drawable/ic_logo"
+
                     />
 
 
@@ -51,27 +49,25 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="@dimen/_20sdp"
-                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintEnd_toStartOf="@id/foundationImgV"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/jobTitleTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="مهندس ميكانيكا"
                     android:drawablePadding="@dimen/_4sdp"
                     android:drawableTint="@color/colorPrimary"
                     android:drawableEnd="@drawable/ic_bag"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintEnd_toStartOf="@id/foundationImgV"
                     app:layout_constraintTop_toBottomOf="@id/foundationNameTV"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10 كم"
                     app:layout_constraintHorizontal_bias=".5"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -83,9 +79,9 @@
                     app:layout_constraintTop_toBottomOf="@id/foundationNameTV"/>
 
                 <TextView
-                    android:id="@+id/gender"
+                    android:id="@+id/genderTV"
                     app:layout_constraintTop_toBottomOf="@id/jobTitleTV"
-                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintEnd_toStartOf="@id/foundationImgV"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:textColor="@color/colorPrimary"
@@ -107,11 +103,11 @@
                     app:layout_constraintHorizontal_bias=".2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/jobTitleTV"
-                    app:layout_constraintEnd_toStartOf="@id/gender"
+                    app:layout_constraintEnd_toStartOf="@id/genderTV"
                     android:text="10-9-2019"/>
 
                 <TextView
-                    android:id="@+id/job_location_tv"
+                    android:id="@+id/jobLocationTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/_4sdp"
@@ -119,8 +115,8 @@
                     android:drawableEnd="@drawable/ic_pin"
                     android:layout_marginBottom="@dimen/_6sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/gender"
-                    app:layout_constraintEnd_toStartOf="@id/foundation_iv"
+                    app:layout_constraintTop_toBottomOf="@id/genderTV"
+                    app:layout_constraintEnd_toStartOf="@id/foundationImgV"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"

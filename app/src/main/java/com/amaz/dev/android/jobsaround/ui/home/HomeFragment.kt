@@ -8,15 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 
 import com.amaz.dev.android.jobsaround.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -44,7 +38,7 @@ class HomeFragment : Fragment() {
 
 
         navController.addOnDestinationChangedListener { _, navDestination: NavDestination, _ ->
-            if (navDestination.id == R.id.menuFragment || navDestination.id == R.id.profileFragment
+            if (navDestination.id == R.id.mapJobsFragment || navDestination.id == R.id.profileFragment
                 || navDestination.id == R.id.chatUserListFragment || navDestination.id == R.id.menuJobsFragment) {
                 bottomNavView.visibility = View.VISIBLE
             } else {

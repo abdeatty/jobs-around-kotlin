@@ -18,7 +18,7 @@
 
 
     <item
-        android:id="@+id/menuFragment"
+        android:id="@+id/mapJobsFragment"
         android:icon="@drawable/ic_location"
         android:title="@string/my_location" />
 

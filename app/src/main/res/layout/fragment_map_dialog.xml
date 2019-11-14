@@ -12,12 +12,15 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_gravity="center"
+        android:elevation="@dimen/_2sdp"
         app:srcCompat="@drawable/ic_pin" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/confirmButton"

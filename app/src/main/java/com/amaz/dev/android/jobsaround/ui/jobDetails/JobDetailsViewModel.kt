@@ -1,4 +1,4 @@
-package com.amaz.dev.android.jobsaround.ui.menuJobs
+package com.amaz.dev.android.jobsaround.ui.jobDetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,33 +7,33 @@ import androidx.lifecycle.viewModelScope
 import com.amaz.dev.android.jobsaround.models.DataResult
 import com.amaz.dev.android.jobsaround.models.JobDetails
 import com.amaz.dev.android.jobsaround.repositories.IJobsRepo
-import com.google.android.gms.maps.model.LatLng
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MenuJobsViewModel(private val iJobsRepo: IJobsRepo) : ViewModel() {
+class JobDetailsViewModel(private val iJobsRepo: IJobsRepo) : ViewModel() {
 
     var error = MutableLiveData<String>()
-    var jobList = MutableLiveData<List<JobDetails>>()
 
-    fun getNearestJobsForSeeker(latLng: LatLng) : LiveData<List<JobDetails>>{
+    fun getJobDetails(jobId : Int) : LiveData<JobDetails>{
 
-
+        var data = MutableLiveData<JobDetails>()
 
         viewModelScope.launch {
 
-            when(val result = iJobsRepo.getNearestJobsForSeeker(latLng)){
+            when(val result = withContext(IO) {iJobsRepo.getJobDetails(jobId)}){
 
                 is DataResult.Success -> {
-                    jobList.value = result.content
+                    data.value = result.content
                     error.value = null
                 }
                 is DataResult.Error -> {
-                    jobList.value = null
+                    data.value = null
                     error.value = result.exception.message
                 }
             }
         }
 
-        return jobList
+        return data
     }
 }

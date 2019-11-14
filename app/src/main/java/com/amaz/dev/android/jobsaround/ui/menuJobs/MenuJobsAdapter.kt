@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
+import com.amaz.dev.android.jobsaround.helpers.Utilities
 import com.amaz.dev.android.jobsaround.models.JobDetails
-import androidx.recyclerview.widget.ListAdapter
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.job_item.view.*
 
-class MenuJobsAdapter : androidx.recyclerview.widget.ListAdapter<JobDetails, MenuJobsAdapter.JobViewHolder>(DiffCallback) {
+class MenuJobsAdapter(private val listerner : ItemClickListener<JobDetails>) : ListAdapter<JobDetails, MenuJobsAdapter.JobViewHolder>(DiffCallback) {
 
 
 
@@ -27,7 +30,7 @@ class MenuJobsAdapter : androidx.recyclerview.widget.ListAdapter<JobDetails, Men
 
     override fun onBindViewHolder(holder: MenuJobsAdapter.JobViewHolder, position: Int) {
 
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), listerner)
     }
 
 
@@ -44,9 +47,13 @@ class MenuJobsAdapter : androidx.recyclerview.widget.ListAdapter<JobDetails, Men
 
     class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        fun bind(job: JobDetails){
+        fun bind(job: JobDetails , listerner: ItemClickListener<JobDetails>){
             itemView.foundationNameTV.text = job.owner?.username
             itemView.jobTitleTV.text = job.jobTitle
+            itemView.genderTV.text = Utilities.getGenderName(job.gender!!)
+            Glide.with(itemView).load(job.owner?.icon).placeholder(R.drawable.ic_logo).into(itemView.foundationImgV)
+
+            itemView.setOnClickListener { listerner.onItemClicked(job) }
 
         }
     }

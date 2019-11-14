@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.Constants
+import com.amaz.dev.android.jobsaround.helpers.Constants.SEEKER
 import com.android.airbag.helpers.SharedPreferencesManager
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -30,7 +31,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var userType = SharedPreferencesManager.getIntValue(context!!,Constants.USER_TYPE)
-        if (userType == 1) createJobButton.visibility = View.GONE
+        if (userType == SEEKER) createJobButton.visibility = View.GONE
 
 
         createJobButton.setOnClickListener {
@@ -38,7 +39,7 @@ class ProfileFragment : Fragment() {
         }
 
         myJobsButton.setOnClickListener {
-            if (userType == 1)
+            if (userType == SEEKER)
             findNavController().navigate(R.id.action_profileFragment_to_seekerJobFragment)
             else
                 findNavController().navigate(R.id.action_profileFragment_to_ownerJobsFragment)

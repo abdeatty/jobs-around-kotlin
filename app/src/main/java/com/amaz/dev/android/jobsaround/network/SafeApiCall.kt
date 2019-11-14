@@ -17,6 +17,7 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> ApiResponse<T>): DataResult<T
 
     return try {
 
+
         var result = apiCall()
         if (result.success == true) {
             val data = result.data

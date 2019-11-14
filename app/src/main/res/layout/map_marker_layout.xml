@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/tv_marker_text"
+        android:id="@+id/markerContentTV"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_30sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Ahmed Mensh"
         android:backgroundTint="@color/green"
        android:paddingTop="@dimen/_8sdp"
         android:textSize="@dimen/_10sdp"

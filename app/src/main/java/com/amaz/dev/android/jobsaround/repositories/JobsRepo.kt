@@ -12,6 +12,19 @@ import com.google.android.gms.maps.model.LatLng
 class JobsRepo(private val  remoteDataSource: RemoteDataSource , private val context: Context) : IJobsRepo {
 
 
+    override suspend fun getJobDetails(jobId: Int): DataResult<JobDetails> {
+
+        return when(val result = remoteDataSource.getJobDetailsForSeeker(jobId)){
+
+            is DataResult.Success -> {
+                DataResult.Success(result.content)
+            }
+            is DataResult.Error -> {
+                DataResult.Error(result.exception)
+            }
+        }
+
+    }
 
 
     override suspend fun getNearestJobsForSeeker(latLng: LatLng): DataResult<List<JobDetails>> {

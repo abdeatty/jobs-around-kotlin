@@ -79,4 +79,6 @@ class RemoteDataSource(private val api: ApiService) {
 
     suspend fun getNearestJobsForSeeker(latLng: LatLng) = safeApiCall { api.getNearestJobsForSeeker(latLng.latitude,latLng.longitude) }
 
+    suspend fun getJobDetailsForSeeker(jobId : Int) = safeApiCall { api.getJobDetails(jobId) }
+
 }

@@ -13,7 +13,7 @@ data class ApiResponse<T>(
     val success: Boolean?
 )
 
-//data class Error(
+//jobList class Error(
 //    @field:Json(name = "code")
 //    val code: Int?,
 //    @field:Json(name = "message")

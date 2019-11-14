@@ -1,4 +1,4 @@
-package com.amaz.dev.android.jobsaround.ui.menu
+package com.amaz.dev.android.jobsaround.ui.mapJobs
 
 
 
@@ -14,14 +14,13 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,35 +31,29 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
-import java.util.ArrayList
-
 import com.amaz.dev.android.jobsaround.R
-import com.amaz.dev.android.jobsaround.ui.home.HomeFragment
-import kotlinx.android.synthetic.main.fragment_menu.*
-import kotlinx.android.synthetic.main.fragment_seeker_register.*
+import com.amaz.dev.android.jobsaround.models.JobDetails
+import com.amaz.dev.android.jobsaround.ui.menuJobs.MenuJobsViewModel
+import kotlinx.android.synthetic.main.fragment_map_jobs.*
+import kotlinx.android.synthetic.main.map_marker_layout.*
 import kotlinx.android.synthetic.main.tool_bar.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-    private val latLngList = ArrayList<LatLng>()
+class MapJobsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+    private lateinit var mJobList : List<JobDetails>
     private var mGoogleMap: GoogleMap? = null
 
-    init {
-        // Required empty public constructor
+    private val viewModel : MenuJobsViewModel by sharedViewModel()
 
-        latLngList.add(LatLng(31.2116923, 29.9396))
-        latLngList.add(LatLng(31.2216923, 29.9296))
-        latLngList.add(LatLng(31.2136923, 29.9496))
-        latLngList.add(LatLng(31.2146923, 29.9596))
-    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_menu, container, false)
+        val view = inflater.inflate(R.layout.fragment_map_jobs, container, false)
         return view
     }
 
@@ -71,30 +64,38 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         mMapView.getMapAsync(this)
 
         toolBarIcon2.setImageDrawable(ContextCompat.getDrawable(context!!,R.drawable.ic_search_black_24dp))
-        toolBarIcon2.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_searchFragment) }
+        toolBarIcon2.setOnClickListener { findNavController().navigate(R.id.action_mapJobsFragment_to_searchFragment) }
 
 
-        job_tv.setOnClickListener {
-            experience_tv.background = null
-            qualifications_tv.background = null
-            job_tv.background =
+        jobFilterTV.setOnClickListener {
+            experienceFilterTV.background = null
+            qualificationsFilterTV.background = null
+            jobFilterTV.background =
                 ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
         }
 
-        experience_tv.setOnClickListener {
-            qualifications_tv.background = null
-            job_tv.background = null
-            experience_tv.background =
+        experienceFilterTV.setOnClickListener {
+            qualificationsFilterTV.background = null
+            jobFilterTV.background = null
+            experienceFilterTV.background =
                 ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
         }
 
 
-        qualifications_tv.setOnClickListener {
-            job_tv.background = null
-            experience_tv.background = null
-            qualifications_tv.background =
+        qualificationsFilterTV.setOnClickListener {
+            jobFilterTV.background = null
+            experienceFilterTV.background = null
+            qualificationsFilterTV.background =
                 ContextCompat.getDrawable(context!!, R.drawable.rect_light_blue)
         }
+
+
+        viewModel.jobList.observe(this , Observer {
+
+            it?.let{
+                mJobList = it
+            }
+        })
     }
 
 
@@ -113,8 +114,6 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
 
     override fun onMapReady(googleMap: GoogleMap) {
-
-
         mGoogleMap = googleMap
         addMarkersToMap()
         if (ActivityCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!,
@@ -128,32 +127,29 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
     }
 
     private fun addMarkersToMap() {
-        if (latLngList.size < 0) {
+        if (mJobList.size < 0) {
             mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(0.0, 0.0), 12.0f))
         } else {
-            for (i in latLngList.indices) {
+            for (job in mJobList) {
 
-                //                Marker marker = mGoogleMap.addMarker(
-                //                        new MarkerOptions()
-                //                                .position(latLngList.get(i))
-                //                );
-                //                marker.setTag(i + "");
 
-                val customInfoWindowAdapter = CustomCompanyInfoWindowAdapter(context!!)
+                val customInfoWindowAdapter = OwnerInfoWindowAdapter(context!!)
                 val markerView = (context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(R.layout.map_marker_layout, null)
-                val tv_marker_text = markerView.findViewById<TextView>(R.id.tv_marker_text)
 
-                val marker = mGoogleMap!!.addMarker(MarkerOptions()
-                    .position(LatLng(latLngList[i].latitude, latLngList[i].longitude)))
+
+                var markerContentTV = markerView.findViewById<TextView>(R.id.markerContentTV)
+                markerContentTV.text = job.jobTitle
+                var marker = mGoogleMap!!.addMarker(MarkerOptions()
+                    .position(LatLng(job.latitude!!.toDouble() , job.longitude!!.toDouble())))
+
+                if (job.gender == 2){
+                    markerView.setBackgroundResource(R.color.pink)
+                }
                 marker.setIcon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, markerView)))
 
 
-                if (i / 2 == 0)
-                    marker.tag = "employee"
-                else
-                    marker.tag = "company"
                 mGoogleMap!!.setInfoWindowAdapter(customInfoWindowAdapter)
-                mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latLngList[i].latitude, latLngList[i].longitude), 12.0f))
+                mGoogleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(job.latitude!!.toDouble(), job.longitude!!.toDouble()), 12.0f))
             }
 
 
@@ -177,48 +173,50 @@ class MenuFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
     override fun onResume() {
         super.onResume()
-        mMapView.onResume()
+        mMapView?.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        mMapView.onPause()
+        mMapView?.onPause()
     }
 
     override fun onStart() {
         super.onStart()
-        mMapView.onStart()
+        mMapView?.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mMapView.onStop()
+        mMapView?.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        mMapView.onDestroy()
+        mMapView?.onDestroy()
 
 
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mMapView.onLowMemory()
+        mMapView?.onLowMemory()
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        if (marker.tag == "company")
-            mGoogleMap!!.setInfoWindowAdapter(CustomCompanyInfoWindowAdapter(context!!))
-        else
-            mGoogleMap!!.setInfoWindowAdapter(CustomEmployeeInfoWindowAdapter(context!!))
+
+        mGoogleMap!!.setInfoWindowAdapter(OwnerInfoWindowAdapter(context!!))
+//        if (marker.tag == "company")
+//            mGoogleMap!!.setInfoWindowAdapter(OwnerInfoWindowAdapter(context!!))
+//        else
+//            mGoogleMap!!.setInfoWindowAdapter(SeekerInfoWindowAdapter(context!!))
         return false
     }
 
 
     companion object {
 
-        private val TAG = "MenuFragment"
+        private val TAG = "MapJobsFragment"
         private val MAPVIEW_BUNDLE_KEY = "Map Bundle"
     }
 }

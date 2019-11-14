@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.Constants
+import com.amaz.dev.android.jobsaround.helpers.Constants.OWNER
 import com.android.airbag.helpers.SharedPreferencesManager
 import kotlinx.android.synthetic.main.fragment_fees.*
 import kotlinx.android.synthetic.main.tool_bar.*
@@ -40,7 +41,7 @@ class FeesFragment : Fragment() {
 
 
         nextButton.setOnClickListener {
-            if (SharedPreferencesManager.getIntValue(context!!,Constants.USER_TYPE) == 1)
+            if (SharedPreferencesManager.getIntValue(context!!,Constants.USER_TYPE) == OWNER)
             findNavController().navigate(R.id.action_feesFragment_to_ownerRegisterFragment)
             else
             findNavController().navigate(R.id.action_feesFragment_to_seekerRegisterFragment)

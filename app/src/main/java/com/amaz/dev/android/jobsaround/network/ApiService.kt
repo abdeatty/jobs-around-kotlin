@@ -111,6 +111,12 @@ interface ApiService {
     suspend fun getNearestJobsForSeeker(@Field("latitude") latitude : Double,
                                   @Field("longitude") longitude: Double) : ApiResponse<List<JobDetails>>
 
+
+    @FormUrlEncoded
+    @POST("job/details")
+    @Headers("$REQUIRE_AUTHENTICATION: true")
+    suspend fun getJobDetails(@Field("job_id") jobId : Int) : ApiResponse<JobDetails>
+
 }
 
 

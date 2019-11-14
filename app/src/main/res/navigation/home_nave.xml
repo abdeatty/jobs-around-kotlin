@@ -10,7 +10,13 @@
     <fragment android:id="@+id/menuJobsFragment"
         tools:layout="@layout/fragment_menu_jobs"
         android:label="Menu Jobs"
-        android:name="com.amaz.dev.android.jobsaround.ui.menuJobs.MenuJobsFragment"/>
+        android:name="com.amaz.dev.android.jobsaround.ui.menuJobs.MenuJobsFragment">
+
+        <action android:id="@+id/action_menuJobsFragment_to_jobDetailsFragment"
+            app:destination="@+id/jobDetailsFragment"/>
+    </fragment>
+
+
     <fragment android:id="@+id/chatUserListFragment"
         android:name="com.amaz.dev.android.jobsaround.ui.chat_list.ChatListFragment"
         tools:layout="@layout/fragment_chat_list"
@@ -52,12 +58,12 @@
         android:name="com.amaz.dev.android.jobsaround.ui.search.SearchFragment"
          tools:layout="@layout/fragment_search"/>
 
-    <fragment android:id="@+id/menuFragment"
-        tools:layout="@layout/fragment_menu"
+    <fragment android:id="@+id/mapJobsFragment"
+        tools:layout="@layout/fragment_map_jobs"
         android:label="@string/menu"
-        android:name="com.amaz.dev.android.jobsaround.ui.menu.MenuFragment">
+        android:name="com.amaz.dev.android.jobsaround.ui.mapJobs.MapJobsFragment">
 
-        <action android:id="@+id/action_menuFragment_to_searchFragment"
+        <action android:id="@+id/action_mapJobsFragment_to_searchFragment"
             app:destination="@+id/searchFragment"/>
     </fragment>
 
@@ -79,8 +85,9 @@
             app:destination="@id/jobDetailsFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/jobDetailsFragment" android:label="jobDetails"
-        android:name="com.amaz.dev.android.jobsaround.ui.job_details.JobDetailsFragment"
+    <fragment android:id="@+id/jobDetailsFragment"
+        android:label="jobDetails"
+        android:name="com.amaz.dev.android.jobsaround.ui.jobDetails.JobDetailsFragment"
         tools:layout="@layout/fragment_job_details"/>
 
 

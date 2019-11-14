@@ -267,7 +267,7 @@ class SeekerRegisterFragment : Fragment() , OnMapReadyCallback, GoogleMap.OnMapC
                 viewModel.seekerRegister(seekerRegisterRequest).observe(this, Observer {
 
                     it?.let {
-                        if (it) findNavController().navigate(R.id.action_seekerRegisterFragment_to_rulesFragment)
+                        if (it) findNavController().navigate(R.id.action_seekerRegisterFragment_to_homeFragment)
                     }
                 })
             }

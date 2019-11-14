@@ -17,4 +17,5 @@ interface IJobsRepo {
     suspend fun getNearestJobsForSeeker(latLng: LatLng) : DataResult<List<JobDetails>>
     suspend fun getSpecialization(qualificationId : Int) : DataResult<List<Specialization>>
     suspend fun getExperienceYears() : DataResult<List<ExperienceYears>>
+    suspend fun getJobDetails(jobId : Int) : DataResult<JobDetails>
 }

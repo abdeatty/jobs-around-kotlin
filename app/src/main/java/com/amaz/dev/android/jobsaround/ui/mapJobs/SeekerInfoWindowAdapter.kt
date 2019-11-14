@@ -1,4 +1,4 @@
-package com.amaz.dev.android.jobsaround.ui.menu
+package com.amaz.dev.android.jobsaround.ui.mapJobs
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.amaz.dev.android.jobsaround.R
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
-class CustomEmployeeInfoWindowAdapter(private val mContext: Context) : GoogleMap.InfoWindowAdapter {
+class SeekerInfoWindowAdapter(private val mContext: Context) : GoogleMap.InfoWindowAdapter {
 
     private val mWindow: View
 

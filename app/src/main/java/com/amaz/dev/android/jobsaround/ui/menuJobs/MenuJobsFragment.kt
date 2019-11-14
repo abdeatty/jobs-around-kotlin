@@ -2,27 +2,37 @@ package com.amaz.dev.android.jobsaround.ui.menuJobs
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
+import com.amaz.dev.android.jobsaround.helpers.ItemClickListener
+import com.amaz.dev.android.jobsaround.models.JobDetails
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_menu_jobs.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class MenuJobsFragment : Fragment() {
+class MenuJobsFragment : Fragment() , ItemClickListener<JobDetails> {
 
 
-    private val viewModel : MenuJobsViewModel by viewModel()
-    private val adapter : MenuJobsAdapter by lazy { MenuJobsAdapter() }
+    override fun onItemClicked(item: JobDetails) {
+
+        val bundle = Bundle()
+        bundle.putInt("jobId",item.id!!)
+        findNavController().navigate(R.id.action_menuJobsFragment_to_jobDetailsFragment,bundle)
+    }
+
+
+    private val viewModel : MenuJobsViewModel by sharedViewModel()
+    private val adapter : MenuJobsAdapter by lazy { MenuJobsAdapter(this) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

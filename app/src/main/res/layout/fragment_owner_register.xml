@@ -187,6 +187,7 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:scaleType="fitXY"/>
 
+
             <TextView
                 android:layout_width="match_parent"
 

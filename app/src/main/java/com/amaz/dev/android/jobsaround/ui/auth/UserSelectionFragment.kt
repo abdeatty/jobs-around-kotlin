@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 
 import com.amaz.dev.android.jobsaround.R
 import com.amaz.dev.android.jobsaround.helpers.Constants
+import com.amaz.dev.android.jobsaround.helpers.Constants.OWNER
+import com.amaz.dev.android.jobsaround.helpers.Constants.SEEKER
 import com.android.airbag.helpers.SharedPreferencesManager
 import kotlinx.android.synthetic.main.fragment_user_selection.*
 import kotlinx.android.synthetic.main.tool_bar.*
@@ -34,12 +36,12 @@ class UserSelectionFragment : Fragment() {
         appBarTitle.text = getString(R.string.new_register)
 
         ownerTV.setOnClickListener {
-            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,1)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,OWNER)
             findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 
         seekerTV.setOnClickListener {
-            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,2)
+            SharedPreferencesManager.setIntValue(context!!,Constants.USER_TYPE,SEEKER)
             findNavController().navigate(R.id.action_userSelectionFragment_to_rulesFragment)
         }
 

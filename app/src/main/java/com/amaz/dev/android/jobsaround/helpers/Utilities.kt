@@ -10,4 +10,13 @@ import android.util.Log
 object Utilities {
 
 
+    fun getGenderName(genderId : Int) : String{
+
+        return when(genderId){
+
+            1 -> "ذكر"
+            2 -> "أنثى"
+            else -> "غير محدد"
+        }
+    }
 }

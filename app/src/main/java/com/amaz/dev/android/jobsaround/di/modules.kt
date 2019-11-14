@@ -13,6 +13,7 @@ import com.amaz.dev.android.jobsaround.ui.auth.phoneverification.PhoneVerificati
 import com.amaz.dev.android.jobsaround.ui.map.LocationViewModel
 import com.amaz.dev.android.jobsaround.ui.auth.register.seeker.SeekerRegisterViewModel
 import com.amaz.dev.android.jobsaround.ui.createJob.CreateJobViewModel
+import com.amaz.dev.android.jobsaround.ui.jobDetails.JobDetailsViewModel
 import com.amaz.dev.android.jobsaround.ui.menuJobs.MenuJobsViewModel
 import com.amaz.dev.android.jobsaround.ui.ownerJobs.OwnerJobsViewModel
 
@@ -36,6 +37,7 @@ private val viewModelModule = module {
     viewModel { CreateJobViewModel(get()) }
     viewModel { OwnerJobsViewModel(get()) }
     viewModel { MenuJobsViewModel(get()) }
+    viewModel { JobDetailsViewModel(get()) }
 }
 
 fun getModules() : Array<Module>{

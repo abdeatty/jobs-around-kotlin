@@ -55,6 +55,7 @@
             android:id="@+id/phoneNumberTi"
             android:layout_width="match_parent"
             android:inputType="phone"
+            android:padding="@dimen/_4sdp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
